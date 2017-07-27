@@ -1,0 +1,120 @@
+<!--<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>巡检员管理 / 代开锁</span></p>-->
+<!--<section class="gatewaySetting">-->
+    <!--<ul class="list-unstyled list-inline gatewaySearch">-->
+        <!--<li><span style="margin: 0 12px;">开始时间</span><input type="text" id="startTime"class="normalIput"></li>-->
+        <!--<li style="margin-left:9px;"><span style="margin: 0 12px;">结束时间</span><input type="text" id="endTime" class="normalIput"></li>-->
+        <!--<li><span style="margin: 0 12px;">片区</span><input type="text" class="normalIput"></li>-->
+        <!--<li style="margin-left:9px;"><span style="margin: 0 12px;">巡检员</span><input type="text" class="normalIput"></li>-->
+        <!--<li style="margin-left:9px;"><span style="margin: 0 12px;">巡检员手机号</span><input type="text" class="normalIput"></li>-->
+        <!--<li><div class="gatewayQuery text-center"><img src="image/search.png"><span style="margin-left: 10px;">查询</span></div></li>-->
+    <!--</ul>-->
+    <!--<table class="table table-striped text-center">-->
+        <!--<tr>-->
+            <!--<th class="text-center">序号</th>-->
+            <!--<th class="text-center">代开锁时间</th>-->
+            <!--<th class="text-center">巡检员</th>-->
+            <!--<th class="text-center">手机号</th>-->
+            <!--<th class="text-center">工号</th>-->
+            <!--<th class="text-center">片区</th>-->
+            <!--<th class="text-center">车位号</th>-->
+            <!--<th class="text-center">停入时间</th>-->
+            <!--<th class="text-center">驶入时间</th>-->
+            <!--<th class="text-center">停车时长</th>-->
+            <!--<th class="text-center">停车费</th>-->
+            <!--<th class="text-center">车主账号</th>-->
+            <!--<th class="text-center">车牌号</th>-->
+        <!--</tr>-->
+        <!--<tr >-->
+            <!--<td>210123</td>-->
+            <!--<td>12月3日12:30</td>-->
+            <!--<td>王建军</td>-->
+            <!--<td>18012364589</td>-->
+            <!--<td>10001</td>-->
+            <!--<td>雨花台区润和创智中心停车场</td>-->
+            <!--<td>10001</td>-->
+            <!--<td>12月3日12:30</td>-->
+            <!--<td>12月3日13:30</td>-->
+            <!--<td>1小时35分钟</td>-->
+            <!--<td>25.30元</td>-->
+            <!--<td>18103265987</td>-->
+            <!--<td>苏A45698</td>-->
+        <!--</tr>-->
+    <!--</table>-->
+<!--</section>-->
+<!--<ul class="list-unstyled list-inline text-right" style="margin-top:10px;">-->
+    <!--<li>跳转至<input type="text" class="entryPage">页</li>-->
+    <!--<li><select name="" id="" class="skipPage"><option value="20">20条/页</option></select></li>-->
+    <!--<li class="pageName"><img src="image/arrow_left.png"></li>-->
+    <!--<li class="pageName">1</li>-->
+    <!--<li class="pageName">2</li>-->
+    <!--<li class="pageName">3</li>-->
+    <!--<li class="pageName">4</li>-->
+    <!--<li class="pageName"><img src="image/icon_dot.png"></li>-->
+    <!--<li class="pageName"><img src="image/arrow_right.png"></li>-->
+<!--</ul>-->
+<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>巡检员管理 / 代开锁</span></p>
+<section class="gatewaySetting">
+    <div class="row add-search">
+        <form class="col-xs-12">
+            <ul class="list-inline">
+                <li>
+                    <span>开始时间</span>
+                    <input type="text" id="startTime">
+                </li>
+                <li>
+                    <span>结束时间</span>
+                    <input type="text" id="endTime">
+                </li>
+                <li>
+                    <span>片区</span>
+                    <input type="text">
+                </li>
+                <li>
+                    <span>巡检员</span>
+                    <input type="text">
+                </li>
+                <li>
+                    <span>巡检员手机号码</span>
+                    <input type="text">
+                </li>
+                <li>
+                    <button class="btn btn-success"><span class="glyphicon glyphicon-search"></span> 查询</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 fee-box">
+            <div class="row auto-line">
+                <div class="col-1"><p>序号</p></div>
+                <div class="col-3"><p>代开锁时间</p></div>
+                <div class="col-2"><p>巡检员</p></div>
+                <div class="col-1"><p>工号</p></div>
+                <div class="col-2"><p>手机号</p></div>
+                <div class="col-3"><p>片区</p></div>
+                <div class="col-2"><p>车位号</p></div>
+                <div class="col-2"><p>停入时间</p></div>
+                <div class="col-2"><p>驶入时间</p></div>
+                <div class="col-2"><p>停车时长</p></div>
+                <div class="col-1"><p>停车费</p></div>
+                <div class="col-2"><p>车主账号</p></div>
+                <div class="col-2"><p>车牌号</p></div>
+            </div>
+            <div ng-mousemove="hover=true" ng-mouseleave="hover=false" class="row auto-line" ng-repeat="pe in areas">
+                <div class="col-1"><p ng-class="{'hover':hover}" style="cursor: default">{{$index+1}}</p></div>
+                <div class="col-3"><p ng-class="{'hover':hover}" style="cursor: default">{{pe.name}}</p></div>
+                <div class="col-2"><p ng-class="{'hover':hover}" style="cursor: default">{{pe.name}}</p></div>
+                <div class="col-1"><p ng-class="{'hover':hover}" style="cursor: default">{{pe.name}}</p></div>
+                <div class="col-2"><p ng-class="{'hover':hover}" style="cursor: default">男</p></div>
+                <div class="col-3"><p ng-class="{'hover':hover}" style="cursor: default">13222221356</p></div>
+                <div class="col-2"><p ng-class="{'hover':hover}" style="cursor: default">888777909098765321</p></div>
+                <div class="col-2"><p ng-class="{'hover':hover}" style="cursor: default">{{pe.name}}</p></div>
+                <div class="col-2"><p ng-class="{'hover':hover}" style="cursor: default">{{pe.name}}</p></div>
+                <div class="col-2"><p ng-class="{'hover':hover}" style="cursor: default">{{pe.name}}</p></div>
+                <div class="col-1"><p ng-class="{'hover':hover}" style="cursor: default">{{pe.name}}</p></div>
+                <div class="col-2"><p ng-class="{'hover':hover}" style="cursor: default">{{pe.name}}</p></div>
+                <div class="col-2"><p ng-class="{'hover':hover}" style="cursor: default">{{pe.name}}</p></div>
+            </div>
+        </div>
+    </div>
+</section>

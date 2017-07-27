@@ -1,0 +1,34 @@
+<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>设置 / 片区设置 / 关联收费规则</span></p>
+
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="orgDetail">
+                <div class="row">
+                    <div class="col-xs-6">关联收费规则 <b ng-if="ruleId">（已关联 - <a ui-sref="feeDetail({id:id,ruleId:ruleId,linkId:ruleId})" style="color: #4BA3FF">{{feeRuleName}}</a>）</b></div>
+                    <div class="col-xs-6 text-right bt-span">
+                        <span ui-sref="areaCtrl" class="remove">&times;</span>
+                    </div>
+                </div>
+                <form class="orgAdd-body-edit" id="myAreaForm" ng-submit="save()">
+
+                    <div class="row this-fee" style="padding: 0 40px;">
+                        <p>筛选<input type="text" ng-model="feeName" placeholder="收费规则名称"></p>
+                        <ul style="margin-bottom: 15px">
+                            <li ng-repeat="fee in fees|filter:feeName">
+                                <input type="radio" name="ruleId" value="{{fee.name}}"><a ui-sref="feeDetail({id:id,ruleId:fee.name,linkId:ruleId})">{{fee.value}}</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="orgAdd-foot">
+                        <button ui-sref="areaCtrl" class="btn btn-default btn-sm" type="button">取消</button>
+                        <button id="storeWeek"
+                                class="btn btn-primary btn-sm" type="submit">保存
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

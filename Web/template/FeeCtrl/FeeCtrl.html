@@ -1,0 +1,88 @@
+<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>设置 / 收费规则设置</span></p>
+<section class="gatewaySetting">
+    <div class="row add-search">
+        <div class="col-xs-8 col-sm-5 col-md-4">
+            <div class="search-box">
+                <input ng-model="searchKeys" ng-keypress="filterFee(searchKeys)" ng-focus="searchtag=true" type="text" placeholder="收费规则名称">
+                <span ng-click="toSearch(searchKeys);feeDetailShow=false" ng-class="{'s':searchtag}" class="glyphicon glyphicon-search"></span>
+            </div>
+        </div>
+        <div class="col-xs-4 col-md-offset-4 btn-group">
+            <!--<button class="btn btn-success"><span class="glyphicon glyphicon-export"></span> 导出</button>-->
+            <button ui-sref="addFee" class="btn btn-success" style="float: right"><span class="glyphicon glyphicon-plus"></span> 添加新规则</button>
+        </div>
+    </div>
+
+    <!--计费列表-->
+    <div ng-show="!feeDetailShow" class="row">
+        <div class="col-xs-12 fee-box">
+            <div class="row">
+                <div class="col-xs-1 text-center"><p>序号</p></div>
+                <div class="col-xs-9 text-center"><p>收费规则名称</p></div>
+                <div class="col-xs-2 text-center"><p>操作</p></div>
+            </div>
+            <div ng-mousemove="hover=true" ng-mouseleave="hover=false" class="row" ng-repeat="fee in fees" ng-click="feeDetail(fee.id)">
+                <div class="col-xs-1 text-center"><p ng-class="{'hover':hover}">{{$index+1}}</p></div>
+                <div class="col-xs-9 text-center"><p ng-class="{'hover':hover}">{{fee.name}}</p></div>
+                <div class="col-xs-2 text-center">
+                    <p class="bt-span" ng-class="{'hover':hover}">
+                        <span title="编辑" ui-sref="editFee({id:fee.id})" ng-click="$event.stopPropagation()" class="glyphicon glyphicon-edit"></span>
+                        <span title="删除" ng-click="delRule(fee.id);$event.stopPropagation()" class="glyphicon glyphicon-trash"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row 计费列表-->
+
+    <!--计费详情-->
+    <div class="row" ng-show="feeDetailShow">
+        <div class="col-xs-12">
+            <div class="orgDetail">
+                <div class="row">
+                    <div class="col-xs-6">{{thisRule.name}}</div>
+                    <div class="col-xs-6 text-right bt-span">
+                        <span ng-click="feeDetailShow=!feeDetailShow" class="glyphicon glyphicon-arrow-left"></span>
+                        <span ui-sref="editFee({id:thisRule.id})" class="glyphicon glyphicon-edit"></span>
+                        <span ng-click="delRule(thisRule.id)" class="glyphicon glyphicon-trash"></span>
+                    </div>
+                </div>
+                <div class="row this-fee">
+                    <div class="col-xs-12" ng-repeat="type in thisRule.types">
+                        <p class="title">
+                            <span>[{{type.typeName=="FREQUENCY"?"按次收费":type.typeName=="INTERVAL"?"计时收费":"阶梯计时收费"}}]</span>
+                            <b ng-repeat="week in type.weeks">
+                                星期{{week==1?"一":week==2?"二":week==3?"三":week==4?"四":week==5?"五":week==6?"六":"日"}}
+                            </b>
+                        </p>
+                        <p ng-if="type.intervalFreeMinutes||type.intervalFreeMinutes==0">
+                            <a class="yellow"></a>免费时长：{{type.intervalFreeMinutes}}分钟
+                        </p>
+                        <p ng-if="type.ladderFreeMinutes||type.ladderFreeMinutes==0">
+                            <a class="yellow"></a>免费时长：{{type.ladderFreeMinutes}}分钟
+                        </p>
+                        <p ng-if="type.maxAmount||type.maxAmount==0">
+                            <a></a>每次收取金额：{{type.maxAmount}}元
+                        </p>
+                        <p ng-if="type.intervalMaxAmount||type.intervalMaxAmount==0">
+                            <a></a>封顶金额：{{type.intervalMaxAmount}}元
+                        </p>
+                        <p ng-if="type.ladderMaxAmount||type.ladderMaxAmount==0">
+                            <a></a>封顶金额：{{type.ladderMaxAmount}}元
+                        </p>
+                        <div ng-if="type.intervals">
+                            <div ng-repeat="interval in type.intervals">
+                                <p><a></a>{{interval.startTime}}至{{interval.endTime=='23:59'?'24:00':interval.endTime}} 每{{interval.unit}}小时 {{interval.price}}元</p>
+                            </div>
+                        </div>
+                        <div ng-if="type.ladders">
+                            <p><a></a>首停时长：{{type.ladders[0].span}}小时 每{{type.ladders[0].unit}}小时 {{type.ladders[0].price}}元</p>
+                            <p><a></a>首停时长之后：每{{type.ladders[1].unit}}小时 {{type.ladders[1].price}}元</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row 计费详情-->
+</section>

@@ -1,0 +1,248 @@
+<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>设置 / 收费规则设置 / {{title}}</span></p>
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="orgDetail">
+                <div class="row">
+                    <div class="col-xs-6">{{title}}</div>
+                    <div class="col-xs-6 text-right bt-span">
+                        <span ui-sref="feeCtrl" class="remove">&times;</span>
+                    </div>
+                </div>
+                <form class="orgAdd-body" id="myRule" ng-submit="save()">
+                    <div class="row">
+                        <div class="col-md-2 col-xs-3 text-right t"><b>*</b>收费规则命名：</div>
+                        <div class="col-md-10 col-xs-9">
+                            <input required ng-readonly="!insert" ng-class="{'read':!insert}" type="text" name="name" ng-model="rule.name" style="width: 50%" placeholder="请输入规则名">
+                        </div>
+                    </div>
+                    <div id="feeWeek">
+                        <div class="row do-fee-first" ng-repeat="(typeIndex, type)  in rule.types">
+                            <p ng-if="$index > 0" ng-click="deleteWeek(rule.types,type)"><span class="glyphicon glyphicon-minus"></span></p>
+                            <div class="col-md-2 col-xs-3 text-right t">
+                                收费标准日期选择：
+                            </div>
+                            <div class="col-md-10 col-xs-9 check-week">
+                                <label class="checkbox-inline">
+                                    <input class="week" type="checkbox" ng-checked="type.weeks.indexOf(1)!=-1" name="type{{typeIndex}}" ng-click="checkedWeek($event,type,1)">
+                                    星期一
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input class="week" type="checkbox" ng-checked="type.weeks.indexOf(2)!=-1" name="type{{typeIndex}}" ng-click="checkedWeek($event,type,2)">
+                                    星期二
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input class="week" type="checkbox" ng-checked="type.weeks.indexOf(3)!=-1" name="type{{typeIndex}}" ng-click="checkedWeek($event,type,3)">
+                                    星期三
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input class="week" type="checkbox" ng-checked="type.weeks.indexOf(4)!=-1" name="type{{typeIndex}}" ng-click="checkedWeek($event,type,4)">
+                                    星期四
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input class="week" type="checkbox" ng-checked="type.weeks.indexOf(5)!=-1" name="type{{typeIndex}}" ng-click="checkedWeek($event,type,5)">
+                                    星期五
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input class="week" type="checkbox" ng-checked="type.weeks.indexOf(6)!=-1" name="type{{typeIndex}}" ng-click="checkedWeek($event,type,6)">
+                                    星期六
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input class="week" type="checkbox" ng-checked="type.weeks.indexOf(7)!=-1" name="type{{typeIndex}}" ng-click="checkedWeek($event,type,7)">
+                                    星期日
+                                </label>
+                            </div>
+                            <div class="col-xs-12 one-fee">
+                                <div class="row">
+                                    <div class="col-xs-3 col-xs-offset-2 ">
+                                        <label class="radio-inline">
+                                            <input ng-click="checkedRuleType($event,type,'FREQUENCY',typeIndex,'fieldFrequency')"
+                                                   type="radio" ng-checked="type.typeName=='FREQUENCY'" name="typeName{{typeIndex}}"/>按次收费
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <label class="radio-inline">
+                                            <input ng-click="checkedRuleType($event,type,'INTERVAL',typeIndex,'fieldInterval')"
+                                                   type="radio" ng-checked="type.typeName=='INTERVAL'" name="typeName{{typeIndex}}"/>计时收费
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <label class="radio-inline">
+                                            <input ng-click="checkedRuleType($event,type,'LADDER',typeIndex,'fieldLadder')"
+                                                   type="radio" ng-checked="type.typeName=='LADDER'" name="typeName{{typeIndex}}"/>阶梯计时收费
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="ruleList{{typeIndex}}" class="col-xs-9 col-xs-offset-2 fee-detail-box">
+                                <i class="i-1" ng-class="{'i-1': type.typeName=='FREQUENCY', 'i-2': type.typeName=='INTERVAL', 'i-3': type.typeName=='LADDER'}"></i>
+
+                                <fieldset ng-disabled="type.typeName!='FREQUENCY'" id="fieldFrequency{{typeIndex}}">
+                                    <div class="row rule FREQUENCY" ng-show="type.typeName=='FREQUENCY'">
+                                        <div class="col-xs-12">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">￥</div>
+                                                <input type="number" required class="form-control" ng-model="type.maxAmount" min="0" max="1000">
+                                                <span>/ 次</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset ng-disabled="type.typeName!='INTERVAL'" id="fieldInterval{{typeIndex}}">
+                                    <div class="row rule INTERVAL" ng-show="type.typeName=='INTERVAL'">
+                                        <div class="col-xs-12" id="feeInterval">
+                                            <div id="feeInterval{{typeIndex}}">
+                                                <div class="row one-line" ng-repeat="interval in type.intervals">
+                                                    <div>收费时段</div>
+                                                    <h3>
+                                                        <input required ng-model="interval.startTime" type="text"
+                                                               class="form-control time start" placeholder="--请选择--">
+                                                    </h3>
+                                                    <div>至</div>
+                                                    <h4>
+                                                        <input required ng-model="interval.endTime" type="text"
+                                                               class="form-control time end" placeholder="--请选择--">
+                                                    </h4>
+                                                    <div>收费</div>
+                                                    <div>
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon">￥</div>
+                                                            <input required type="number" class="form-control" ng-model="interval.price"
+                                                                   min="0" max="1000" value="2" />
+                                                        </div>
+                                                    </div>
+                                                    <div>/</div>
+                                                    <div>
+                                                        <input required type="number" class="form-control" ng-model="interval.unit"
+                                                               value="0.5" min="0" max="1000" step="0.5" />
+                                                    </div>
+                                                    <div>小时</div>
+                                                    <h5><span ng-click="addInterval($event,type)" class="glyphicon glyphicon-plus"></span></h5>
+                                                    <h6 ng-if="$index > 0"><span ng-click="deleteInterval(type,interval)" class="glyphicon glyphicon-minus"></span></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <div class="row one-line">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" checked="checked"
+                                                               ng-click="forbiddenInput($event,'intervalMinuId'+typeIndex)">
+                                                        免费时长
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <input required type="number" class="form-control" id="intervalMinuId{{typeIndex}}"
+                                                           ng-model="type.intervalFreeMinutes" value="15" min="0" max="1000">
+                                                </div>
+                                                <div>分钟</div>
+                                            </div>
+                                            <div class="row one-line">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" checked="checked"
+                                                               ng-click="forbiddenInput($event,'intervalMaxId'+typeIndex)">
+                                                        单日收费封顶
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">￥</div>
+                                                        <input required type="number" class="form-control" id="intervalMaxId{{typeIndex}}"
+                                                               ng-model="type.intervalMaxAmount" min="0" max="1000"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset ng-disabled="type.typeName!='LADDER'" id="fieldLadder{{typeIndex}}">
+                                    <div class="row rule LADDER" ng-show="type.typeName=='LADDER'">
+                                        <div class="col-xs-12">
+                                            <div class="row one-line">
+                                                <div>首停时长</div>
+                                                <p>
+                                                    <input required type="number" class="form-control" ng-model="type.ladders[0].span"
+                                                           value="0.5" min="0" step="0.5" max="1000"/>
+                                                </p>
+                                                <div>小时</div>
+                                                <div class="d1">收费</div>
+                                                <div>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">￥</div>
+                                                        <input required type="number" class="form-control"
+                                                               ng-model="type.ladders[0].price" min="0" max="1000"/>
+                                                    </div>
+                                                </div>
+                                                <div>/</div>
+                                                <div>
+                                                    <input required type="number" class="form-control"
+                                                           ng-model="type.ladders[0].unit" min="0" step="0.5" max="1000"/>
+                                                </div>
+                                                <div>小时</div>
+                                            </div>
+                                            <div class="row one-line">
+                                                <div class="d0">首停时长之后</div>
+                                                <div class="d2">收费</div>
+                                                <div>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">￥</div>
+                                                        <input required type="number" class="form-control"
+                                                               ng-model="type.ladders[1].price" min="0" max="1000"/>
+                                                    </div>
+                                                </div>
+                                                <div>/</div>
+                                                <div class="d3">
+                                                    <input required type="number" class="form-control"
+                                                           ng-model="type.ladders[1].unit" min="0" step="0.5" max="1000"/>
+                                                </div>
+                                                <div>小时</div>
+                                            </div>
+                                            <div class="row one-line">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" checked="checked"
+                                                               ng-click="forbiddenInput($event,'ladderMinuId'+typeIndex)">
+                                                        免费时长
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <input required type="number"  class="form-control" id="ladderMinuId{{typeIndex}}"
+                                                           ng-model="type.ladderFreeMinutes" min="0" max="1000"/>
+                                                </div>
+                                                <div>分钟</div>
+                                            </div>
+                                            <div class="row one-line">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" checked="checked"
+                                                               ng-click="forbiddenInput($event,'ladderMaxId'+typeIndex)">
+                                                        单日收费封顶
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">￥</div>
+                                                        <input required type="number"  class="form-control" id="ladderMaxId{{typeIndex}}"
+                                                               ng-model="type.ladderMaxAmount" min="0" max="1000"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-sm add-fee" ng-disabled="notAdd" type="button" ng-click="addRuleType()">添加收费设置</button>
+                    <div class="orgAdd-foot">
+                        <button class="btn btn-default btn-sm" type="button" ui-sref="feeCtrl">取消</button>
+                        <button class="btn btn-primary btn-sm" type="submit">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>片区管理 / 设备故障信息</span></p>
+<section class="gatewaySetting">
+    <div class="row add-search">
+        <form class="col-xs-12" ng-submit="tosearch()">
+            <ul class="list-inline">
+                <li>
+                    <span>开始时间</span>
+                    <input name="" type="text" id="startTime">
+                </li>
+                <li>
+                    <span>结束时间</span>
+                    <input name="" type="text" id="endTime">
+                </li>
+                <li>
+                    <span>巡检员</span>
+                    <input name="" type="text" id="managerName">
+                </li>
+                <li>
+                    <span>巡检员工号</span>
+                    <input name="" type="text" id="jobNumber">
+                </li>
+                <li>
+                    <span>巡检员手机号码</span>
+                    <input name="" type="text" id="managerPhone">
+                </li>
+            </ul>
+            <ul class="list-inline" style="margin-top: 10px">
+                <li>
+                    <span>片区</span>
+                    <div class="autoMatch" id="autoMatchEq">
+                        <span ng-click="showAll(event,'autoMatchEq',areaValue)"></span>
+                        <input id="parkLotName" type="text" autocomplete="off" ng-keyup="startMatch(event,'autoMatchEq',areaValue);"/>
+                        <div>
+                            <ul></ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span>故障名称</span>
+                    <select ng-model="faulted" ng-options="m.id as m.faultContent for m in faultContentMap">
+                        <option value="">-- 请选择 --</option>
+                    </select>
+                </li>
+                <li>
+                    <span>故障状态</span>
+                    <select ng-model="processed" ng-options="m.id as m.processState for m in processStateMap">
+                        <option value="">-- 请选择 --</option>
+                    </select>
+                </li>
+                <li>
+                    <span>故障来源</span>
+                    <select ng-model="faultSourced" ng-options="m.id as m.faultSource for m in faultSourceMap">
+                        <option value="">-- 请选择 --</option>
+                    </select>
+                </li>
+                <li>
+                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> 查询</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 fee-box">
+            <div class="row auto-line">
+                <div class="col-1"><p>序号</p></div>
+                <div class="col-4"><p>片区</p></div>
+                <div class="col-2"><p>巡检员</p></div>
+                <div class="col-2"><p>工号</p></div>
+                <div class="col-3"><p>手机号</p></div>
+                <div class="col-4"><p>故障时间</p></div>
+                <div class="col-2"><p>车位号</p></div>
+                <div class="col-4"><p>故障名称</p></div>
+                <div class="col-7"><p>故障来源</p></div>
+                <div class="col-7"><p>处理状态</p></div>
+            </div>
+            <div ng-mousemove="hover=true" ng-mouseleave="hover=false" class="row auto-line" ng-repeat="eq in equipmentMsgs">
+                <div class="col-1"><p ng-class="{'hover':hover}" style="cursor: default">{{$index+1}}</p></div>
+                <div class="col-4"><p ng-class="{'hover':hover}" style="cursor: default">{{eq.parkLotName}}</p></div>
+                <div class="col-2"><p ng-class="{'hover':hover}" style="cursor: default">{{eq.managerName}}</p></div>
+                <div class="col-2"><p ng-class="{'hover':hover}" style="cursor: default">{{eq.jobNumber}}</p></div>
+                <div class="col-3"><p ng-class="{'hover':hover}" style="cursor: default">{{eq.managerPhone}}</p></div>
+                <div class="col-4"><p ng-class="{'hover':hover}" style="cursor: default">{{eq.addTime|date:'yyyy-MM-dd hh:mm:ss'}}</p></div>
+                <div class="col-2"><p ng-class="{'hover':hover}" style="cursor: default">{{eq.parkPlaceId}}</p></div>
+                <div class="col-4"><p ng-class="{'hover':hover}" style="cursor: default" title="{{faultContents[$index]}}"><span class="g" ng-repeat="f in faultContents[$index]">{{f}}</span></p></div>
+                <div class="col-7"><p ng-class="{'hover':hover}" style="cursor: default">{{eq.faultSource==0?"人工推送":"设备上报"}}</p></div>
+                <div class="col-7"><p ng-class="{'hover':hover}" style="cursor: default">{{eq.processState==0?"待处理":"已处理"}}</p></div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,51 @@
+<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>设置 / 片区设置</span></p>
+<section class="gatewaySetting">
+    <div class="row add-search">
+        <form class="col-xs-8" id="parkLotForm">
+            <ul class="list-inline">
+                <li>
+                    <span>片区</span>
+                    <input type="hidden" name="parkLotId">
+                    <div class="autoMatch" id="autoMatchPFI">
+                        <span ng-click="showAll(event,'autoMatchPFI',areaValue)"></span>
+                        <input id="key" type="text" autocomplete="off" ng-keyup="startMatch(event,'autoMatchPFI',areaValue);"/>
+                        <div>
+                            <ul></ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <button ng-click="toSearch()" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> 查询</button>
+                </li>
+            </ul>
+        </form>
+        <div class="col-xs-4 btn-group">
+            <!--<button class="btn btn-success"><span class="glyphicon glyphicon-export"></span> 导出</button>-->
+            <button ui-sref="addArea" class="btn btn-success" style="float: right"><span class="glyphicon glyphicon-plus"></span> 添加片区</button>
+        </div>
+    </div>
+
+    <!--片区列表-->
+    <div class="row">
+        <div class="col-xs-12 fee-box">
+            <div class="row">
+                <div class="col-xs-1 text-center"><p>序号</p></div>
+                <div class="col-xs-9 text-center"><p>片区</p></div>
+                <div class="col-xs-2 text-center"><p>操作</p></div>
+            </div>
+            <div ng-mousemove="hover=true" ng-mouseleave="hover=false" class="row" ng-repeat="area in partLots">
+                <div class="col-xs-1 text-center"><p ng-class="{'hover':hover}" style="cursor: default">{{$index+1}}</p></div>
+                <div class="col-xs-9 text-center"><p ng-class="{'hover':hover}" style="cursor: default">{{area.parkLotName}}</p></div>
+                <div class="col-xs-2 text-center">
+                    <p class="bt-span" ng-class="{'hover':hover}" style="cursor: default">
+                        <span title="编辑" ui-sref="editArea({id:area.parkLotId})" class="glyphicon glyphicon-edit"></span>
+                        <span title="关联收费规则" ui-sref="linkFee({id:area.parkLotId,ruleId:area.chargePlanId})" class="glyphicon glyphicon-link"></span>
+                        <span title="删除" ng-click="delArea(area.parkLotId)" class="glyphicon glyphicon-trash"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row 片区列表-->
+
+</section>

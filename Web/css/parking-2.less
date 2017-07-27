@@ -1,0 +1,285 @@
+@native_blue:#4BA3FF;
+@yellow:#f49d0c;
+
+//规则列表
+.fee-box{
+  padding: 0 30px;
+  .hover{
+    background-color: #A5D1FF !important;
+    cursor: pointer;
+  }
+  .row{
+    height: 34px;
+    line-height: 34px;
+    border-top: 1px solid #e2e7ee;
+    div{
+      padding: 0;
+      p{
+        margin: 0 1px;
+        height: 34px !important;
+        line-height: 34px !important;
+        overflow: hidden;
+        .g+.g:before{
+          content: ", ";
+        }
+      }
+    }
+  }
+  .row:first-child{
+    margin-bottom: 3px;
+    border-top: 1px solid #eff5fd;
+    div{
+      padding: 0;
+      p{
+        background-color: #e2e7ee !important;
+      }
+    }
+  }
+  .row:last-child{
+    border-bottom: 1px solid #e2e7ee;
+  }
+  .row:nth-child(2n+1){
+    div{
+      padding: 0;
+      p{
+        background-color: #eff5fd;
+      }
+    }
+  }
+  .row:nth-child(2n+2){
+    div{
+      padding: 0;
+      p{
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+//规则详情
+.this-fee{
+  padding-top: 15px !important;
+  input{
+    width: 50px;
+    height: 26px;
+    line-height: 26px;
+    margin-top: 4px;
+    border-radius: 4px;
+  }
+  input[type='radio']{
+    width: 15px;
+    vertical-align: -9px;
+    margin-right: 10px;
+  }
+  input[type='radio']+a{
+    cursor: pointer;
+    color: @native_blue;
+    text-decoration: none;
+  }
+  input[type='radio']+a:hover{
+    text-decoration: underline;
+  }
+  >div{
+    margin-bottom: 10px;
+    padding: 10px 15px;
+  }
+  p{
+    height: 34px !important;
+    line-height: 34px !important;
+    margin: 0 0 2px !important;
+    background-color: #f5f5f5 !important;
+    span{
+      display: inline-block;
+      width: 120px;
+      height: 34px;
+      line-height: 34px;
+      text-align: center;
+      background-color: @native_blue;
+      color: #fff;
+      font-weight: 700;
+    }
+    a{
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 6px;
+      background: @native_blue;
+      margin: 10px;
+      vertical-align: -8px;
+    }
+    a.yellow{
+      background: @yellow;
+    }
+  }
+  p.title{
+    background-color: transparent !important;
+  }
+  >p{
+    input{
+      margin-left: 5px;
+      width: 200px;
+      padding: 5px;
+      font-size: 12px;
+    }
+  }
+}
+
+//添加规则
+#feeWeek>div{
+  position: relative;
+  margin-bottom: 20px;
+  >p{
+    position: absolute;
+    top: 2px;
+    left: 26px;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    border-radius: 26px;
+    border: 1px solid #ccc;
+    text-align: center;
+    color: @native_blue;
+    cursor: pointer;
+    z-index: 9;
+  }
+  >p:hover{
+    color: #fff;
+    background: @native_blue;
+  }
+}
+input[type="radio"]{
+  margin: 3px 0 0;
+}
+.t{
+  height: 34px;
+  line-height: 32px;
+}
+.check-week{
+  >label{
+    height: 30px;
+    line-height: 30px;
+    input{
+      margin-top: 9px;
+    }
+  }
+  .checkbox-inline+.checkbox-inline {
+    margin-top: 0;
+    margin-left: 20px;
+  }
+}
+.one-fee{
+  margin-top: 20px;
+}
+.fee-detail-box{
+  position: relative;
+  border: 1px solid @native_blue;
+  border-radius: 4px;
+  margin-top: 20px;
+  padding: 30px;
+  i{
+    position: absolute;
+    top: -10px;
+    border-left:6px transparent dashed;
+    border-right:6px transparent dashed;
+    border-bottom:10px solid @native_blue;
+    z-index: 2;/*兼容ie8-*/
+  }
+  .i-1{
+    left: 15px;
+  }
+  .i-2{
+    left: 33.33%;
+    margin-left: 15px;
+  }
+  .i-3{
+    left: 66.67%;
+    margin-left: 15px;
+  }
+  .input-group{
+    position: relative;
+    width: 200px;
+    span{
+      position: absolute;
+      top: 8px;
+      right: -30px;
+    }
+  }
+  .one-line{
+    >div,>h3,>h4,>h5,>h6,>p{
+      float: left;
+      height: 34px;
+      line-height: 34px;
+      margin: 5px 3px;
+    }
+    >h3,>h4{
+      input[type="number"],input[type="text"],input[type="time"]{
+        width: 100px !important;
+      }
+    }
+    input[type="number"],input[type="text"],input[type="time"],.input-group{
+      width: 70px !important;
+    }
+    input[type="checkbox"]{
+      margin-top: 11px;
+    }
+    >div:nth-child(5){
+      margin-left: 20px;
+    }
+    >div:nth-child(9){
+      margin-right: 20px;
+    }
+    >div:first-child{
+      margin-left: 20px;
+    }
+    .d0{
+      margin-left: 123px !important;
+      color: @native_blue;
+    }
+    .d1{
+      margin-left: 20px;
+      margin-right: -15px;
+    }
+    .d2{
+      margin-left: -2px;
+      color: @native_blue;
+    }
+    .d3{
+      margin-left: 3px !important;
+    }
+  }
+  .glyphicon{
+    padding: 5px;
+    color: @native_blue;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .glyphicon:hover{
+    background-color: @native_blue;
+    color: #fff;
+  }
+}
+.parkBox{
+  margin-bottom: 10px;
+  .parkPlaceBox{
+    .parkPlace{
+      display: inline-block;
+      width: 83px;
+      height: 83px;
+      margin: 10px;
+      padding-top: 18px;
+      background: #fff;
+      border-bottom: 2px solid #dbdbdb;
+      font-size: 12px;
+      img{
+        margin: 0 auto;
+      }
+    }
+  }
+}
+.add-fee{
+  margin-left: 900px;
+  margin-bottom: 10px;
+}

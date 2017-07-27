@@ -1,0 +1,40 @@
+.searchphone{
+  position: absolute;
+    max-height: 340px;
+  z-index: 10;
+  padding: 0 30px;
+    overflow-y: hidden;
+}
+.searchphone>div>p{
+    font-size: 12px;
+    padding-left: 7px;
+    height: 34px;
+    line-height: 34px;
+    width: 130px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+}
+.searchphone>.hover{
+    background-color: #A5D1FF !important;
+    cursor: pointer;
+}
+
+/*.searchphone>div>p:first-child{*/
+     /*margin-bottom: 3px;*/
+      /*border-top: 1px solid #eff5fd;*/
+     /*padding: 0;*/
+     /*background-color: #e2e7ee !important;*/
+
+ /*}*/
+/*.searchphone>div>p:last-child{*/
+     /*border-bottom: 1px solid #e2e7ee;*/
+   /*}*/
+/*.searchphone>div>p:nth-child(2n+1){*/
+             /*padding: 0;*/
+             /*background-color: #eff5fd;*/
+/*}*/
+/*.searchphone>div>p:nth-child(2n+2){*/
+             /*padding: 0;*/
+            /*background-color: #fff;*/
+ /*}*/

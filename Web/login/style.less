@@ -1,0 +1,241 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+html{
+  font-size: 62.5%;
+}
+input,button{
+  border: none;
+  outline:none;
+  background-color: transparent;
+  -webkit-appearance:none
+}
+//登录
+.login_bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: url("images/iot.jpg") no-repeat;
+  background-size: cover;
+  width: 100%;
+  min-height: 540px;
+  padding-top: 18vh;
+  .login_box{
+    width: 320px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 5px;
+    padding-top: 1rem;
+    .logo,.iot{
+      display: block;
+      width: 36.3%;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .iot{
+      width: 54%;
+      margin-top: .3rem;
+    }
+    hr{
+      width: 100%;
+      height: 2px;
+      border: 0;
+      border-top: 2px solid #4BA3FF;
+    }
+    form{
+      padding: 0 1.5rem 2rem 1.5rem;
+      label,input,button{
+        display: block;
+      }
+      label{
+        color: #7F8FA4;
+        font-size: 1.2rem;
+        margin: 1rem 0 .3rem 0;
+        .wrong_msg{
+          float: right;
+          color: #ff0000;
+          padding-left: 1.6rem;
+          background: url("images/wrong_msg.svg") no-repeat left center;
+          background-size: 1.2rem;
+          display: none;
+        }
+      }
+      input{
+        background-color: #F8FAFC;
+        border: 1px solid #DFE3E9;
+        color: #333;
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+        padding-left: 1.5rem;
+        font-size: 1.5rem;
+        border-radius: 4px;
+      }
+      input:focus{
+        background-color: #F8FAFC;
+        border: 1px solid #4BA3FF;
+      }
+      .verification-code{
+        width: 100%;
+        height: 36px;
+        input{
+          width: 56%;
+          float: left;
+        }
+        div{
+          float: left;
+          margin-left: 10px;
+          width: 85px;
+          height: 36px;
+          overflow: hidden;
+          cursor: pointer;
+          image{
+            height: 100%;
+          }
+        }
+        .code_img{
+          float: left;
+          cursor: pointer;
+          margin-left: 5px;
+          margin-top: 8px;
+          width: 20px;
+          height: 20px;
+          background-image: url("images/refresh.png");
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+        .code_img.code_transition{
+          transition: All .8s ease-in-out;
+          -webkit-transition: All .8s ease-in-out;
+          -moz-transition: All .8s ease-in-out;
+          -o-transition: All .8s ease-in-out;
+        }
+        .code_img.code_transform{
+          transform: rotate(-720deg);
+          -webkit-transform: rotate(-720deg);
+          -moz-transform: rotate(-720deg);
+          -o-transform: rotate(-720deg);
+          -ms-transform: rotate(-720deg);
+        }
+      }
+      button{
+        position: relative;
+        cursor: pointer;
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+        margin-top: 1.5rem;
+        background: -ms-linear-gradient(top,  #357ECA, #489EF8);        /* IE 10 */
+        background:-moz-linear-gradient(top,  #357ECA, #489EF8);/*火狐*/
+        background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#357ECA), to(#489EF8));/* Safari 4-5, Chrome 1-9*/
+        background: -webkit-linear-gradient(top, #357ECA, #489EF8);   /*Safari5.1 Chrome 10+*/
+        background: -o-linear-gradient(top, #357ECA, #489EF8);  /*Opera 11.10+*/
+        border-radius: 4px;
+        color: #fff;
+        text-align: center;
+        font-size: 1.5rem;
+        a{
+          position: absolute;
+          top: 0;
+          left: 45%;
+        }
+        i {
+          position: absolute;
+          top: 0;
+          left: 56%;
+          display: none;
+          overflow: hidden;
+        }
+        .dot{
+          display: inline-block;
+          -webkit-animation: dot 3s infinite;
+          animation: dot 3s infinite;
+        }
+        @-webkit-keyframes dot {
+          0% { width: 13px }
+          2% { width: 0 }
+          33.33% { width: 4px }
+          66.66% { width: 9px}
+          100% { width: 13px}
+        }
+
+        @keyframes dot {
+          0% { width: 13px }
+          2% { width: 0 }
+          33.33% { width: 4px }
+          66.66% { width: 9px}
+          100% { width: 13px}
+        }
+      }
+      button:hover{
+        color: #f0f0f0;
+        background: -ms-linear-gradient(top,  #25598F, #347CC7);        /* IE 10 */
+        background:-moz-linear-gradient(top,  #25598F, #347CC7);/*火狐*/
+        background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#25598F), to(#347CC7));/* Safari 4-5, Chrome 1-9*/
+        background: -webkit-linear-gradient(top, #25598F, #347CC7);   /*Safari5.1 Chrome 10+*/
+        background: -o-linear-gradient(top, #25598F, #347CC7);  /*Opera 11.10+*/
+      }
+    }
+  }
+  .tip_bottom{
+    width: 320px;
+    height: 20px;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+    font-family:  Arial, sans-serif;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    i{
+      display: inline-block;
+      width: 18%;
+      height: 0;
+      border-top: 1px solid #97B5CA;
+      vertical-align: middle;
+    }
+    span{
+      vertical-align: middle;
+      a{
+        color: #fff;
+        text-decoration: none;
+      }
+      a:hover{
+        text-decoration: underline;
+      }
+      a:visited{
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+}
+@media (max-width: 480px) {
+  .login_bg{
+    background: url("images/iot-phone.jpg") no-repeat;
+    background-size: cover;
+    padding-top: 15vh;
+  }
+}
+@media (max-width: 320px) {
+  .login_bg{
+    .login_box{
+      width: 290px;
+    }
+    .tip_bottom{
+      width: 290px;
+      i{
+        width: 15%;
+      }
+    }
+  }
+  .verification-code{
+    input{
+      width: 52% !important;
+    }
+  }
+}

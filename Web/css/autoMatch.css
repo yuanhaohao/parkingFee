@@ -1,0 +1,52 @@
+.autoMatch{
+    position: relative;
+    display: inline-block;
+}
+.autoMatch > span {
+    position: absolute;
+    top: 13px;
+    right: 6px;
+    border-left: 3px transparent dashed;
+    border-right: 3px transparent dashed;
+    border-top: 7px solid #333;
+    cursor: pointer;
+}
+.autoMatch > div {
+    position: absolute;
+    top: 34px;
+    left: 0;
+    width: 130px;
+    color: #333;
+    background: #fff;
+    font-size: 12px;
+    z-index: 9;
+}
+.autoMatch > div.show {
+    border: 1px solid #ccc;
+}
+.autoMatch > div.hide {
+    border: none;
+}
+.autoMatch > div>ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+}
+.autoMatch > div> ul >li{
+    height: 16px;
+    line-height: 16px;
+    padding-left: 7px;
+    overflow: hidden;
+}
+.autoMatch > div> ul >li.mouseover ,
+.autoMatch > div> ul >li.over{
+    background-color: #1866b1;
+    color: #fff;
+}
+.autoMatch > div> ul >li.clear ,
+.autoMatch > div> ul >li.mouseout{
+    background-color: #fff;
+    color: #333;
+}

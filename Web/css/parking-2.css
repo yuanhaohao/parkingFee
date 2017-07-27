@@ -1,0 +1,277 @@
+.fee-box {
+  padding: 0 30px;
+}
+.fee-box .hover {
+  background-color: #A5D1FF !important;
+  cursor: pointer;
+}
+.fee-box .row {
+  height: 34px;
+  line-height: 34px;
+  border-top: 1px solid #e2e7ee;
+}
+.fee-box .row div {
+  padding: 0;
+}
+.fee-box .row div p {
+  margin: 0 1px;
+  height: 34px !important;
+  line-height: 34px !important;
+  overflow: hidden;
+}
+.fee-box .row div p .g + .g:before {
+  content: ", ";
+}
+.fee-box .row:first-child {
+  margin-bottom: 3px;
+  border-top: 1px solid #eff5fd;
+}
+.fee-box .row:first-child div {
+  padding: 0;
+}
+.fee-box .row:first-child div p {
+  background-color: #e2e7ee !important;
+}
+.fee-box .row:last-child {
+  border-bottom: 1px solid #e2e7ee;
+}
+.fee-box .row:nth-child(2n+1) div {
+  padding: 0;
+}
+.fee-box .row:nth-child(2n+1) div p {
+  background-color: #eff5fd;
+}
+.fee-box .row:nth-child(2n+2) div {
+  padding: 0;
+}
+.fee-box .row:nth-child(2n+2) div p {
+  background-color: #fff;
+}
+.this-fee {
+  padding-top: 15px !important;
+}
+.this-fee input {
+  width: 50px;
+  height: 26px;
+  line-height: 26px;
+  margin-top: 4px;
+  border-radius: 4px;
+}
+.this-fee input[type='radio'] {
+  width: 15px;
+  vertical-align: -9px;
+  margin-right: 10px;
+}
+.this-fee input[type='radio'] + a {
+  cursor: pointer;
+  color: #4BA3FF;
+  text-decoration: none;
+}
+.this-fee input[type='radio'] + a:hover {
+  text-decoration: underline;
+}
+.this-fee > div {
+  margin-bottom: 10px;
+  padding: 10px 15px;
+}
+.this-fee p {
+  height: 34px !important;
+  line-height: 34px !important;
+  margin: 0 0 2px !important;
+  background-color: #f5f5f5 !important;
+}
+.this-fee p span {
+  display: inline-block;
+  width: 120px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  background-color: #4BA3FF;
+  color: #fff;
+  font-weight: 700;
+}
+.this-fee p a {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 6px;
+  background: #4BA3FF;
+  margin: 10px;
+  vertical-align: -8px;
+}
+.this-fee p a.yellow {
+  background: #f49d0c;
+}
+.this-fee p.title {
+  background-color: transparent !important;
+}
+.this-fee > p input {
+  margin-left: 5px;
+  width: 200px;
+  padding: 5px;
+  font-size: 12px;
+}
+#feeWeek > div {
+  position: relative;
+  margin-bottom: 20px;
+}
+#feeWeek > div > p {
+  position: absolute;
+  top: 2px;
+  left: 26px;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  border-radius: 26px;
+  border: 1px solid #ccc;
+  text-align: center;
+  color: #4BA3FF;
+  cursor: pointer;
+  z-index: 9;
+}
+#feeWeek > div > p:hover {
+  color: #fff;
+  background: #4BA3FF;
+}
+input[type="radio"] {
+  margin: 3px 0 0;
+}
+.t {
+  height: 34px;
+  line-height: 32px;
+}
+.check-week > label {
+  height: 30px;
+  line-height: 30px;
+}
+.check-week > label input {
+  margin-top: 9px;
+}
+.check-week .checkbox-inline + .checkbox-inline {
+  margin-top: 0;
+  margin-left: 20px;
+}
+.one-fee {
+  margin-top: 20px;
+}
+.fee-detail-box {
+  position: relative;
+  border: 1px solid #4BA3FF;
+  border-radius: 4px;
+  margin-top: 20px;
+  padding: 30px;
+}
+.fee-detail-box i {
+  position: absolute;
+  top: -10px;
+  border-left: 6px transparent dashed;
+  border-right: 6px transparent dashed;
+  border-bottom: 10px solid #4BA3FF;
+  z-index: 2;
+  /*兼容ie8-*/
+}
+.fee-detail-box .i-1 {
+  left: 15px;
+}
+.fee-detail-box .i-2 {
+  left: 33.33%;
+  margin-left: 15px;
+}
+.fee-detail-box .i-3 {
+  left: 66.67%;
+  margin-left: 15px;
+}
+.fee-detail-box .input-group {
+  position: relative;
+  width: 200px;
+}
+.fee-detail-box .input-group span {
+  position: absolute;
+  top: 8px;
+  right: -30px;
+}
+.fee-detail-box .one-line > div,
+.fee-detail-box .one-line > h3,
+.fee-detail-box .one-line > h4,
+.fee-detail-box .one-line > h5,
+.fee-detail-box .one-line > h6,
+.fee-detail-box .one-line > p {
+  float: left;
+  height: 34px;
+  line-height: 34px;
+  margin: 5px 3px;
+}
+.fee-detail-box .one-line > h3 input[type="number"],
+.fee-detail-box .one-line > h4 input[type="number"],
+.fee-detail-box .one-line > h3 input[type="text"],
+.fee-detail-box .one-line > h4 input[type="text"],
+.fee-detail-box .one-line > h3 input[type="time"],
+.fee-detail-box .one-line > h4 input[type="time"] {
+  width: 100px !important;
+}
+.fee-detail-box .one-line input[type="number"],
+.fee-detail-box .one-line input[type="text"],
+.fee-detail-box .one-line input[type="time"],
+.fee-detail-box .one-line .input-group {
+  width: 70px !important;
+}
+.fee-detail-box .one-line input[type="checkbox"] {
+  margin-top: 11px;
+}
+.fee-detail-box .one-line > div:nth-child(5) {
+  margin-left: 20px;
+}
+.fee-detail-box .one-line > div:nth-child(9) {
+  margin-right: 20px;
+}
+.fee-detail-box .one-line > div:first-child {
+  margin-left: 20px;
+}
+.fee-detail-box .one-line .d0 {
+  margin-left: 123px !important;
+  color: #4BA3FF;
+}
+.fee-detail-box .one-line .d1 {
+  margin-left: 20px;
+  margin-right: -15px;
+}
+.fee-detail-box .one-line .d2 {
+  margin-left: -2px;
+  color: #4BA3FF;
+}
+.fee-detail-box .one-line .d3 {
+  margin-left: 3px !important;
+}
+.fee-detail-box .glyphicon {
+  padding: 5px;
+  color: #4BA3FF;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+.fee-detail-box .glyphicon:hover {
+  background-color: #4BA3FF;
+  color: #fff;
+}
+.parkBox {
+  margin-bottom: 10px;
+}
+.parkBox .parkPlaceBox .parkPlace {
+  display: inline-block;
+  width: 83px;
+  height: 83px;
+  margin: 10px;
+  padding-top: 18px;
+  background: #fff;
+  border-bottom: 2px solid #dbdbdb;
+  font-size: 12px;
+}
+.parkBox .parkPlaceBox .parkPlace img {
+  margin: 0 auto;
+}
+.add-fee {
+  margin-left: 900px;
+  margin-bottom: 10px;
+}

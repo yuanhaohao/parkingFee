@@ -1,0 +1,67 @@
+<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>设置 / 车位设备设置 / {{title}}</span>
+</p>
+
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="orgDetail">
+                <div class="row">
+                    <div class="col-xs-6">{{title}}</div>
+                    <div class="col-xs-6 text-right bt-span">
+                        <span ui-sref="parkspaceEquipment" class="remove">&times;</span>
+                    </div>
+                </div>
+                <form id="updateForm" class="orgAdd-body add-search">
+
+                    <div class="row">
+                        <div class="col-xs-1 text-right t"><b>*</b>片区</div>
+                        <div class="col-xs-3">
+                            <select name="place.parkLotId" ng-model="place.parkLotId">
+                                <option value=""> -- 请选择 --</option>
+                                <option ng-repeat="item in areas" value="{{item.name}}">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-1 text-right t"><b>*</b>车位ID</div>
+                        <div class="col-xs-3">
+                            <input name="place.placenum" type="text" ng-model="place.placenum" />
+                        </div>
+                        <div class="col-xs-1 text-right t"><b>*</b>地磁ID</div>
+                        <div class="col-xs-3">
+                            <input name="place.mansensorId" type="text" ng-model="place.mansensorId"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-1 text-right t"><b>*</b>地锁ID</div>
+                        <div class="col-xs-3">
+                            <input name="place.lockId" type="text" ng-model="place.lockId"/>
+                        </div>
+                        <div class="col-xs-1 text-right t">方位</div>
+                        <div class="col-xs-3">
+                            <input type="text" ng-model="place.position"/>
+                        </div>
+                        <div class="col-xs-1 text-right t">道路位置</div>
+                        <div class="col-xs-3">
+                            <input type="text" ng-model="place.location"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-1 text-right t"><b>*</b>经度</div>
+                        <div class="col-xs-3">
+                            <input name="place.longtitude" type="text" ng-model="place.longtitude"/>
+                        </div>
+                        <div class="col-xs-1 text-right t"><b>*</b>纬度</div>
+                        <div class="col-xs-3">
+                            <input name="place.latitude" type="text" ng-model="place.latitude"/>
+                        </div>
+                    </div>
+                    <div class="orgAdd-foot">
+                        <button ui-sref="parkspaceEquipment" class="btn btn-sm btn-default" type="button">取消</button>
+                        <button ng-click="saveAndLeave()" type="button" class="btn btn-sm btn-primary">保存</button>
+                        <button ng-click="saveAndStay()" type="button" class="btn btn-sm btn-primary"
+                                ng-if="insert" style="margin-left: 10px">继续添加车位设备</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

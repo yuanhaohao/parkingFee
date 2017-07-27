@@ -1,0 +1,99 @@
+<!--<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>车主管理 / 停车记录</span></p>-->
+<!--<section class="gatewaySetting">-->
+    <!--<ul class="list-unstyled list-inline gatewaySearch">-->
+        <!--<li><span style="margin: 0 12px;">账号</span><input type="text" class="normalIput"></li>-->
+        <!--<li style="margin-left:9px;"><span style="margin: 0 12px;">开始时间</span><input type="text" class="normalIput" id="parkingRecordStar"></li>-->
+        <!--<li style="margin-left:9px;"><span style="margin: 0 12px;">结束时间</span><input type="text" class="normalIput" id="parkingRecordEnd"></li>-->
+        <!--<li><div class="gatewayQuery text-center"><img src="image/search.png"><span style="margin-left: 10px;">查询</span></div></li>-->
+    <!--</ul>-->
+    <!--<table class="table table-striped text-center">-->
+        <!--<tr>-->
+            <!--<th class="text-center">序号</th class="text-center">-->
+            <!--<th class="text-center">账号</th>-->
+            <!--<th class="text-center">片区</th>-->
+            <!--<th class="text-center">车位ID</th>-->
+            <!--<th class="text-center">停入时间</th>-->
+            <!--<th class="text-center">驶出时间</th>-->
+            <!--<th class="text-center">停车时长</th>-->
+            <!--<th class="text-center">应缴停车费</th>-->
+            <!--<th class="text-center">实收停车费</th>-->
+        <!--</tr>-->
+            <!--<tr ng-repeat="list in lists">-->
+                <!--<td>{{$index+1}}</td>-->
+                <!--<td>{{list.user.phonenum}}</td>-->
+                <!--<td>{{list.parkPlace.parkLot.parkLotName}}</td>-->
+                <!--<td>{{list.parkPlace.placenum}}</td>-->
+                <!--<td>{{list.startTime}}</td>-->
+                <!--<td>{{list.endTime}}</td>-->
+                <!--<td></td>-->
+                <!--<td>{{list.needPay}}</td>-->
+                <!--<td></td>-->
+            <!--</tr>-->
+    <!--</table>-->
+<!--</section>-->
+<!--<ul class="list-unstyled list-inline text-right" style="margin-top:10px;">-->
+    <!--<li>跳转至<input type="text" class="entryPage">页</li>-->
+    <!--<li><select name="" id="" class="skipPage"><option value="20">20条/页</option></select></li>-->
+    <!--<li class="pageName"><img src="image/arrow_left.png"></li>-->
+    <!--<li class="pageName">1</li>-->
+    <!--<li class="pageName">2</li>-->
+    <!--<li class="pageName">3</li>-->
+    <!--<li class="pageName">4</li>-->
+    <!--<li class="pageName"><img src="image/icon_dot.png"></li>-->
+    <!--<li class="pageName"><img src="image/arrow_right.png"></li>-->
+<!--</ul>-->
+<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>主管理 / 停车记录</span></p>
+<section class="gatewaySetting">
+    <div class="row add-search">
+        <form class="col-xs-12">
+            <ul class="list-inline">
+                <li>
+                    <span>账号</span>
+                    <input type="text" ng-keyup="forsearch.searchPhone()" id="parkRe" autocomplete="off" ng-model="query">
+                    <div class="searchphone" ng-show="shown">
+                        <div >
+                            <p ng-repeat="list in searchList | filter:query " ng-class="{'hover':hover}" style="cursor: default" ng-click="forsearch.phone(list.user.phonenum)">{{list.user.phonenum}}</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span>开始时间</span>
+                    <input type="text" id="parkingStart" autocomplete="off">
+                </li>
+                <li>
+                    <span>结束时间</span>
+                    <input type="text" id="parkingEnd" autocomplete="off">
+                </li>
+                <li>
+                    <button class="btn btn-success" ng-click="search()"><span class="glyphicon glyphicon-search"></span> 查询</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+  <div class="row">
+    <div class="col-xs-12 fee-box">
+        <div class="row auto-line">
+            <div class="col-1"><p>序号</p></div>
+            <div class="col-3"><p>账号</p></div>
+            <div class="col-4"><p>片区</p></div>
+            <div class="col-2"><p>车位ID</p></div>
+            <div class="col-4"><p>停入时间</p></div>
+            <div class="col-4"><p>驶出时间</p></div>
+            <div class="col-3"><p>停车时长</p></div>
+            <div class="col-3"><p>应缴停车费</p></div>
+            <div class="col-3"><p>实收停车费</p></div>
+        </div>
+        <div ng-mousemove="hover=true" ng-mouseleave="hover=false" class="row auto-line" ng-repeat="list in lists">
+            <div class="col-1"><p ng-class="{'hover':hover}" style="cursor: default">{{$index+1}}</p></div>
+            <div class="col-3"><p ng-class="{'hover':hover}" style="cursor: default">{{list.user.phonenum}}</p></div>
+            <div class="col-4"><p ng-class="{'hover':hover}" style="cursor: default">{{list.parkPlace.parkLot.parkLotName}}</p></div>
+            <div class="col-2"><p ng-class="{'hover':hover}" style="cursor: default">{{list.parkPlace.placenum}}</p></div>
+            <div class="col-4"><p ng-class="{'hover':hover}" style="cursor: default">{{list.startTime}}</p></div>
+            <div class="col-4"><p ng-class="{'hover':hover}" style="cursor: default">{{list.endTime}}</p></div>
+            <div class="col-3"><p ng-class="{'hover':hover}" style="cursor: default" ng-bind="duration(list.longParkingTime)"></p></div>
+            <div class="col-3"><p ng-class="{'hover':hover}" style="cursor: default">{{list.needPay}}</p></div>
+            <div class="col-3"><p ng-class="{'hover':hover}" style="cursor: default">{{list.payAmount}}</p></div>
+        </div>
+    </div>
+   </div>
+</section>

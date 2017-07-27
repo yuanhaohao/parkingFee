@@ -1,0 +1,55 @@
+<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>片区管理 / 停车费信息 </span></p>
+<section class="gatewaySetting">
+    <div class="row add-search">
+        <form class="col-xs-12">
+            <ul class="list-inline">
+                <li>
+                    <span>片区</span>
+                    <div class="autoMatch" id="autoMatchPFI">
+                        <span ng-click="showAll(event,'autoMatchPFI',areaValue)"></span>
+                        <input id="areaN" type="text" autocomplete="off" ng-keyup="startMatch(event,'autoMatchPFI',areaValue);"/>
+                        <div>
+                            <ul></ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span>开始时间</span>
+                    <input ng-model="startTime" type="text" id="parkingStart">
+                </li>
+                <li>
+                    <span>结束时间</span>
+                    <input ng-model="endTime" type="text" id="parkingEnd">
+                </li>
+                <li>
+                    <button ng-click="toSearch()" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> 查询</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 fee-box">
+            <div class="row auto-line">
+                <div class="col-1"><p>序号</p></div>
+                <div class="col-4"><p>片区</p></div>
+                <div class="col-6"><p>车位数量</p></div>
+                <div class="col-6"><p>应收总金额</p></div>
+                <div class="col-6"><p>实收总金额</p></div>
+                <div class="col-6"><p>欠费总金额</p></div>
+                <div class="col-6"><p>微信支付总金额</p></div>
+                <div class="col-6"><p>代付费总金额</p></div>
+            </div>
+            <div ng-mousemove="hover=true" ng-mouseleave="hover=false" class="row auto-line" ng-repeat="pf in parkFeeMsgs">
+                <div class="col-1"><p ng-class="{'hover':hover}" style="cursor: default">{{$index+1}}</p></div>
+                <div class="col-4"><p ng-class="{'hover':hover}" style="cursor: default">{{pf.parklotName}}</p></div>
+                <div class="col-6"><p ng-class="{'hover':hover}" style="cursor: default">{{pf.totalCount}}</p></div>
+                <div class="col-6"><p ng-class="{'hover':hover}" style="cursor: default">{{pf.receivableAmount}}元</p></div>
+                <div class="col-6"><p ng-class="{'hover':hover}" style="cursor: default">{{pf.amount}}元</p></div>
+                <div class="col-6"><p ng-class="{'hover':hover}" style="cursor: default">{{pf.arrearsAmount}}元</p></div>
+                <div class="col-6"><p ng-class="{'hover':hover}" style="cursor: default">{{pf.amountByTransfer}}元</p></div>
+                <div class="col-6"><p ng-class="{'hover':hover}" style="cursor: default">{{pf.amountByCash}}元</p></div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,57 @@
+body{margin:0;font-family:"Microsoft YaHei";}
+.hx-mainBody{position: relative;width:1346px;height:660px;margin:0 auto;}
+.hx-mainBody-header{display: flex;align-items: center;height: 65px;font-size: 22px;color:#565760;justify-content: space-between;}
+.hx-mainBody-userName{border: none;padding:0 12px;font-size: 12px;}
+.hx-mainBody-headerTitleImg{padding-left: 35px;padding-right: 12px;}
+.hx-mainBody-hr{margin:0;border-top: 1px solid #d2d2d2;height: 0;}
+.hx-paletteLeft{width: 200px;height:680px;border-right: 1px solid #d2d2d2;border-left: 1px solid #d2d2d2;}
+.hx-paletteLeft li{cursor:pointer}
+.hx-paletteItem{padding:0 24px;height:42px;display: flex;align-items: center;border-bottom: 1px solid #d2d2d2;position: relative}
+.hx-palette-Item{height:42px;padding-left: 55px !important;display: flex;align-items: center;border-bottom: 1px solid #d2d2d2;position: relative}
+.hx-palette-list{display: none;}
+.hx-paletteFooter{position:absolute;bottom:-85px;left:0;cursor:pointer;width: 199px;height: 37px; background: url(../image/mplatform_icon_return.png) no-repeat center;background-size: cover}
+.hx-paletteFooter-t{left:5px;width: 46px;height: 20px;border-bottom-right-radius: 10px;border-top-right-radius: 10px;line-height: 18px;background: #1866b1;color: #fff;text-align: right;padding-right: 5px;font-size: 22px;z-index: 9}
+.hx-paletteFooter-t:before{content: "\00bb";}
+.aside-t{display: none}
+.hx-paletteInner-t{left: 5px !important;width: 1339px !important;}
+.home-item-t{width: 209px !important;}
+.parkBox .parkPlaceBox .parkPlace-t{width: 82px !important;}
+.hx-paletteName{margin-left: 12px;}
+.hx-iconDown{position:absolute;right:24px;top:18px}
+.hx-paletteInner{position:absolute;left:208px;top:62px;height:683px;width:1136px;}
+
+.hello{width:100%;height:600px;border: 1px solid #d2d2d2;border-bottom: none;background-color:#f4f4f4}
+
+.OwnerManage{height:42px;display: flex;align-items: center;margin-bottom: 0;}
+.homeImg{margin: 0 12px 0 20px;}
+.entryPage{width:36px;height:29px;margin-left: 12px;margin-right: 6px;}
+.skipPage{width:90px;height:29px;padding-left:10px;}
+.pageName{width:29px;height:29px;line-height:29px;text-align:center;border: 1px solid #d2d2d2;}
+
+#driveManageShow,#settingShow,#earaParkingShow,#StatisticsShow,#ProcessInspectorShow{display: none;}
+/*首页*/
+.home{width:100%;height:642px;border: 1px solid #d2d2d2;border-bottom: none;background-color:#f4f4f4}
+.home-item-total{display: flex;flex-wrap: wrap;}
+.home-item{width:212px;height:210px;background-color: #ffffff;margin:12px 0 0 12px;display: flex;align-items: center;justify-content: center;box-shadow: 0 2px 0 #dbdbdb;}
+.home-item-num{font-size: 36px;color:#fd8c00;margin:0;}
+.home-item-font{font-size: 14px;color:#333333;}
+#indicatorContainerWrap{position: relative;display: inline-block;}
+.rad-cntnt{position: absolute;display: table;vertical-align: middle;text-align: center;width: 100%;top:63%;-webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -ms-transform: translateY(-50%);-o-transform: translateY(-50%);transform: translateY(-50%);font-size:14px;line-height: 24px;}
+
+/*网关设置*/
+.gatewaySetting{width:100%;padding:15px !important;min-height:645px;border: 1px solid #d2d2d2;border-bottom: none;background-color:#f4f4f4}
+.gatewaySearch{height:85px;margin-top: 6px;margin-bottom: 0;}
+.gatewayQuery{margin-left: 16px;width:78px;height:30px;background-color:#1865b0;color: #FFFFFF;border-radius: 6px;padding-top:5px}
+.rightButton{width:78px;height:30px;background-color:#1865b0;color: #FFFFFF;border-radius: 6px;padding-top:5px;}
+.normalIput{width:120px;height:30px;padding-left: 12px;border:1px solid #e3e4e6;border-radius: 6px;outline: none;}
+/*片区设置*/
+.areaAdd{float: right;margin-right: 5px;}
+.areaSure{float: right;margin-right:10px;}
+.areaCenterInput{width:1000px;height:30px;padding-left: 12px;border:1px solid #e3e4e6;border-radius: 6px;outline: none;}
+/*设备管理*/
+
+
+/*账户信息页面——————>>>>>>>>  余额不足*/
+.feeComparResult{color:red;!important;}
+/*密码失效*/
+.passwordFalse{color: red;}

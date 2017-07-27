@@ -1,0 +1,60 @@
+
+<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>车主管理 / 欠费记录 </span></p>
+<section class="gatewaySetting">
+    <div class="row add-search">
+        <form class="col-xs-12">
+            <ul class="list-inline">
+                <li>
+                    <span>账号</span>
+                    <input type="text" ng-keyup="forsearch.searchPhone()" id="arrearsRecordsName" autocomplete="off" ng-model="query">
+                    <div class="searchphone" ng-show="shown">
+                        <div>
+                            <p ng-repeat="list in searchList | filter:query" ng-class="{'hover':hover}" style="cursor: default" ng-click="forsearch.phone(list.userPhone)">{{list.userPhone}}</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span>开始时间</span>
+                    <input type="text" id="startTime" autocomplete="off">
+                </li>
+                <li>
+                    <span>结束时间</span>
+                    <input type="text" id="endTime" autocomplete="off">
+                </li>
+                <li>
+                    <button class="btn btn-success" ng-click="search()"><span class="glyphicon glyphicon-search"></span> 查询</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 fee-box">
+            <div class="row auto-line">
+                <div class="col-1"><p>序号</p></div>
+                <div class="col-2"><p>账号</p></div>
+                <div class="col-4"><p>片区</p></div>
+                <div class="col-3"><p>车位ID</p></div>
+                <div class="col-4"><p>停入时间</p></div>
+                <div class="col-4"><p>驶出时间</p></div>
+                <div class="col-3"><p>停车时长</p></div>
+                <div class="col-3"><p>余额不足</p></div>
+                <div class="col-3"><p>欠费金额</p></div>
+            </div>
+            <div ng-mousemove="hover=true" ng-mouseleave="hover=false" class="row auto-line" ng-repeat="list in lists">
+                <div class="col-1"><p ng-class="{'hover':hover}" style="cursor: default">{{$index+1}}</p></div>
+                <div class="col-2"><p ng-class="{'hover':hover}" style="cursor: default">{{list.userPhone}}</p></div>
+                <div class="col-4"><p ng-class="{'hover':hover}" style="cursor: default">{{list.lotName}}</p></div>
+                <div class="col-3"><p ng-class="{'hover':hover}" style="cursor: default">{{list.placeName}}</p></div>
+                <div class="col-4"><p ng-class="{'hover':hover}" style="cursor: default">{{list.startTime}}</p></div>
+                <div class="col-4"><p ng-class="{'hover':hover}" style="cursor: default">{{list.endTime}}</p></div>
+                <div class="col-3"><p ng-class="{'hover':hover}" style="cursor: default" ng-bind="duration(list.duration)"></p></div>
+                <div class="col-3"><p ng-class="{'hover':hover}" style="cursor: default">{{list.amount}}</p></div>
+                <div class="col-3"><p ng-class="{'hover':hover}" style="cursor: default">{{list.arrearsAmount}}</p></div>
+                <!--<div class="col-5">-->
+                    <!--<p ng-class="{'hover':hover}" style="cursor: default">{{pe.name}}</p>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+</section>

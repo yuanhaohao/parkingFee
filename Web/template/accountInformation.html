@@ -1,0 +1,71 @@
+
+<!--<ul class="list-unstyled list-inline text-right" style="margin-top:10px;">-->
+    <!--<li>跳转至<input type="text" class="entryPage">页</li>-->
+    <!--<li><select name="" id="" class="skipPage"><option value="20">20条/页</option></select></li>-->
+    <!--<li class="pageName"><img src="image/arrow_left.png"></li>-->
+    <!--<li class="pageName">1</li>-->
+    <!--<li class="pageName">2</li>-->
+    <!--<li class="pageName">3</li>-->
+    <!--<li class="pageName">4</li>-->
+    <!--<li class="pageName"><img src="image/icon_dot.png"></li>-->
+    <!--<li class="pageName"><img src="image/arrow_right.png"></li>-->
+<!--</ul>-->
+<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>车主管理 / 账号信息</span></p>
+<section class="gatewaySetting">
+    <div class="row add-search">
+        <form class="col-xs-12">
+            <ul class="list-inline">
+                <li>
+                    <span>账号</span>
+                    <input type="text" ng-keyup="forsearch.searchPhone()" id="accountInfo" autocomplete="off" ng-model="query">
+                    <div class="searchphone" ng-show="shown">
+                        <div>
+                            <p ng-repeat="list in searchList | filter:query " ng-class="{'hover':hover}" style="cursor: default" ng-click="forsearch.phone(list.phonenum)">{{list.phonenum}}</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span>开始时间</span>
+                    <input type="text" id="startTime" autocomplete="off">
+                </li>
+                <li>
+                    <span>结束时间</span>
+                    <input type="text" id="endTime" autocomplete="off">
+                </li>
+                <li>
+                    <button class="btn btn-success" ng-click="search()"><span class="glyphicon glyphicon-search"></span> 查询</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 fee-box">
+            <div class="row auto-line">
+                <div class="col-1"><p>序号</p></div>
+                <div class="col-3"><p>账号</p></div>
+                <div class="col-3"><p>钱包余额</p></div>
+                <div class="col-2"><p>余额不足</p></div>
+                <div class="col-3"><p>欠费金额</p></div>
+                <div class="col-4"><p>充值时间(最后一次)</p></div>
+                <div class="col-4"><p>充值金额(最后一次)</p></div>
+                <div class="col-4"><p>充值方式(最后一次)</p></div>
+                <div class="col-3"><p>操作</p></div>
+            </div>
+            <div ng-mousemove="hover=true" ng-mouseleave="hover=false" class="row auto-line" ng-repeat="list in lists">
+                <div class="col-1"><p ng-class="{'hover':hover}" style="cursor: default">{{$index+1}}</p></div>
+                <div class="col-3"><p ng-class="{'hover':hover}" style="cursor: default">{{list.phonenum}}</p></div>
+                <div class="col-3"><p ng-class="{'hover':hover}" style="cursor: default">{{list.balance}}</p></div>
+                <div class="col-2"><p ng-class="{'hover':hover,'feeComparResult': (list.amountlimit >= list.balance )}" style="cursor: default" ng-bind="compare(list.amountlimit,list.balance)"></p></div>
+                <div class="col-3"><p ng-class="{'hover':hover}" style="cursor: default">{{list.arrearsAmount}}</p></div>
+                <div class="col-4"><p ng-class="{'hover':hover}" style="cursor: default" ng-bind="date(list.rechargetime)"></p></div>
+                <div class="col-4"><p ng-class="{'hover':hover}" style="cursor: default">{{list.amount}}</p></div>
+                <div class="col-4"><p ng-class="{'hover':hover}" style="cursor: default" ng-bind="pay(list.rechargeway)"></p></div>
+                <div class="col-3">
+                    <p class="bt-span" ng-class="{'hover':hover}" style="cursor: default">
+                        <span title="详情" ui-sref="accountDetail({phone:list.phonenum})" class="glyphicon glyphicon-file"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

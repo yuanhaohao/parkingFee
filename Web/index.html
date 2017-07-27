@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>城市路侧停车管理平台</title>
+    <link rel="icon" href="image/mplatform_icon_logo.png">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="lib/jQuery.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-ui-router.js"></script>
+    <link rel="stylesheet" href="bootStrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/layui/layui.css">
+
+    <link rel="stylesheet" href="css/parking.css">
+    <link rel="stylesheet" href="css/parking-2.css">
+    <link rel="stylesheet" href="css/searchPhone.css">
+    <link rel="stylesheet" href="lib/jquery-datepair-master/jquery.timepicker.css"><!--time选择-->
+    <link rel="stylesheet" href="css/autoMatch.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" />
+
+    <script src="js/main.js"></script>
+    <script src="js/server.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/index.js"></script>
+    <script src="controller/arrearsRecordsContr.js"></script>
+    <script src="controller/parkingRecordContr.js"></script>
+    <script src="controller/loginMassageContr.js"></script>
+    <script src="controller/accountInformationContr.js"></script>
+    <script src="controller/accountDetailContr.js"></script>
+
+    <script src="lib/radialIndicator.js"></script>
+    <script src="lib/layui/layui.js"></script>
+    <script src="lib/highcharts.js"></script>
+
+    <script src="lib/layer/layer/layer.js"></script><!--弹出层组件-->
+    <script src="lib/jquery-datepair-master/jquery.timepicker.js"></script><!--time选择-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
+</head>
+<body ng-controller="index">
+<div class="hx-mainBody">
+    <header class="hx-mainBody-header">
+        <div class="text-left">
+            <img src="image/mplatform_icon_logo.png" class="hx-mainBody-headerTitleImg">
+            <span>城市路侧停车平台</span>
+        </div>
+        <div class="text-right" style="padding-right: 25px;"><img src="image/mplatform_icon_user.png"><select onchange="gout()
+        " class="hx-mainBody-userName"><option ng-bind="userName"></option><option value="1">退出登录</option></select>
+        </div>
+    </header>
+    <hr class="hx-mainBody-hr">
+    <aside ng-class="{'aside-t':reverse}">
+        <ul class="list-unstyled hx-paletteLeft" id="hx-list">
+            <li class="hx-paletteItem"><img src="image/mplatform_icon_back.png"><span class="hx-paletteName">返回项目列表</span></li>
+
+            <li>
+                <p ui-sref="homePage" class="hx-paletteItem"><img src="image/mplatform_icon_home.png"><span class="hx-paletteName">首页</span></p>
+            </li>
+
+            <li>
+                <p class="hx-paletteItem"><img src="image/mplatform_icon_home.png"><span class="hx-paletteName">设置</span><img src="image/mplatform_icon_arrow_down.png" class="hx-iconDown"></p>
+                <ul class="list-unstyled hx-palette-list">
+                    <li class="hx-palette-Item" ui-sref="areaCtrl"><span>片区设置</span></li>
+                    <li class="hx-palette-Item" ui-sref="parkspaceEquipment"><span>车位设备设置</span></li>
+                    <!--<li class="hx-palette-Item" ui-sref="gateway"><span>网关设置</span></li>-->
+                    <li class="hx-palette-Item" ui-sref="feeCtrl"><span>收费规则设置</span></li>
+                    <li class="hx-palette-Item" ui-sref="inspectorCtrl"><span>巡检员设置</span></li>
+                </ul>
+            </li>
+
+            <li>
+                <p class="hx-paletteItem"><img src="image/mplatform_icon_hostmanagement_nomal.png"><span class="hx-paletteName">车主管理</span><img src="image/mplatform_icon_arrow_down.png" class="hx-iconDown"></p>
+                <ul class="list-unstyled hx-palette-list">
+                    <li class="hx-palette-Item" ui-sref="loginMessage"><span>注册信息</span></li>
+                    <li class="hx-palette-Item" ui-sref="arrearsRecords"><span>欠费记录</span></li>
+                    <li class="hx-palette-Item" ui-sref="parkingRecords"><span>停车记录（车主）</span></li>
+                    <li class="hx-palette-Item" ui-sref="accountInformation"><span>账户信息</span></li>
+                </ul>
+            </li>
+            <!--<li>-->
+                <!--<p class="hx-paletteItem"><img src="image/mplatform_icon_inspection.png"><span class="hx-paletteName">巡检员管理</span><img src="image/mplatform_icon_arrow_down.png" class="hx-iconDown"></p>-->
+                <!--<ul class="list-unstyled hx-palette-list">-->
+                    <!--<li class="hx-palette-Item" ui-sref="agentUnlock"><span>代开锁</span></li>-->
+                    <!--<li class="hx-palette-Item" ui-sref="generationInfo"><span>代收费信息</span></li>-->
+                <!--</ul>-->
+            <!--</li>-->    
+
+            <li>
+                <p class="hx-paletteItem"><img src="image/mplatform_icon_areamanagement.png"><span class="hx-paletteName">片区管理</span><img src="image/mplatform_icon_arrow_down.png" class="hx-iconDown"></p>
+                <ul class="list-unstyled hx-palette-list">
+                    <li class="hx-palette-Item" ui-sref="parkingfeeInfo"><span>停车费信息</span></li>
+                    <li class="hx-palette-Item" ui-sref="equipmentFault"><span>设备故障信息</span></li>
+                    <!--<li class="hx-palette-Item" ui-sref="fixedTimeLiftLock"><span>固定时间升降锁</span></li>-->
+                </ul>
+            </li>
+
+            <li>
+                <p class="hx-paletteItem"><img src="image/mplatform_icon_statisc.png"><span class="hx-paletteName">统计与展示</span><img src="image/mplatform_icon_arrow_down.png" class="hx-iconDown"></p>
+                <ul class="list-unstyled hx-palette-list">
+                    <li class="hx-palette-Item" ui-sref="parkingSpaceCurrently"><span>车位实时占用情况</span></li>
+                    <!--<li class="hx-palette-Item" ui-sref="parkingfeeStatistics"><span>折线图</span></li>-->
+                </ul>
+            </li>
+
+        </ul>
+    </aside>
+    <p class="hx-paletteFooter" ng-class="{'hx-paletteFooter-t':reverse}" ng-click="reverse=!reverse;$event.stopPropagation()"></p>
+ <main class="hx-paletteInner" ng-class="{'hx-paletteInner-t':reverse}" ui-view>
+ </main>
+</div>
+
+<script src="template/homePage/homePage.js"></script>
+
+<script src="template/AreaCtrl/AreaCtrl.js"></script>
+<script src="template/AreaCtrl/addArea.js"></script>
+<script src="template/AreaCtrl/editArea.js"></script>
+<script src="template/AreaCtrl/linkFee.js"></script>
+<script src="template/AreaCtrl/feeDetail.js"></script>
+
+<script src="template/ParkspaceEquipment/ParkspaceEquipment.js"></script>
+<script src="template/ParkspaceEquipment/addPE.js"></script>
+
+<script src="template/FeeCtrl/FeeCtrl.js"></script>
+<script src="template/FeeCtrl/addFee.js"></script>
+
+<script src="template/InspectorCtrl/InspectorCtrl.js"></script>
+<script src="template/InspectorCtrl/addIn.js"></script>
+<script src="template/InspectorCtrl/editIn.js"></script>
+
+<script src="template/AreaManage/parkingfeeInfo.js"></script>
+<script src="template/AreaManage/equipmentFault.js"></script>
+
+<script src="template/StatisticsShow/parkingSpaceCurrently.js"></script>
+<script>
+    sessionStorage.setItem("tokenId", 222222);
+</script>
+</body>
+</html>

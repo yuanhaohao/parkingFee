@@ -1,0 +1,108 @@
+<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>设置 / 车位设备设置</span></p>
+<section class="gatewaySetting">
+    <div class="row add-search">
+        <form id="searchForm" class="col-xs-10" ng-submit="search()">
+            <ul class="list-inline">
+                <li>
+                    <span>片区</span>
+                    <input type="hidden" name="parkLotId" id="parkLotId" value="">
+                    <div class="autoMatch" id="autoMatchPFI">
+                        <span ng-click="showAll(event,'autoMatchPFI',areaValue)"></span>
+                        <input id="areaN" type="text" autocomplete="off" ng-keyup="startMatch(event,'autoMatchPFI',areaValue);"/>
+                        <div>
+                            <ul></ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span>车位ID</span>
+                    <input type="text" name="placenum">
+                </li>
+                <li>
+                    <span>地磁ID</span>
+                    <input type="text" name="mansensorId">
+                </li>
+                <li>
+                    <span>锁ID</span>
+                    <input type="text" name="lockId">
+                </li>
+                <li>
+                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> 查询
+                    </button>
+                </li>
+            </ul>
+        </form>
+        <div class="col-xs-2 btn-group">
+            <button ui-sref="addPE" class="btn btn-success" style="float: right">
+                <span class="glyphicon glyphicon-plus"></span> 添加车位设备
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 fee-box">
+            <div class="row">
+                <div class="col-xs-1 text-center"><p>序号</p></div>
+                <div class="col-xs-2 text-center"><p>片区</p></div>
+                <div class="col-xs-2 text-center"><p>车位ID</p></div>
+                <div class="col-xs-1 text-center"><p>地磁ID</p></div>
+                <div class="col-xs-1 text-center"><p>地锁ID</p></div>
+                <div class="col-xs-1 text-center"><p>方位</p></div>
+                <div class="col-xs-1 text-center"><p>道路位置</p></div>
+                <div class="col-xs-1 text-center"><p>经度</p></div>
+                <div class="col-xs-1 text-center"><p>纬度</p></div>
+                <div class="col-xs-1 text-center"><p>操作</p></div>
+            </div>
+            <div ng-mousemove="hover=true" ng-mouseleave="hover=false" class="row" ng-repeat="item in place">
+                <div class="col-xs-1 text-center">
+                    <p ng-class="{'hover':hover}" style="cursor: default">{{$index+1}}</p>
+                </div>
+                <div class="col-xs-2 text-center">
+                    <p ng-class="{'hover':hover}" style="cursor: default">
+                    {{item.parklotname}}
+                    </p>
+                </div>
+                <div class="col-xs-2 text-center">
+                    <p ng-class="{'hover':hover}" style="cursor: default">
+                    {{item.placenum}}
+                    </p>
+                </div>
+                <div class="col-xs-1 text-center">
+                    <p ng-class="{'hover':hover}" style="cursor: default">
+                    {{item.magsensorId}}
+                    </p>
+                </div>
+                <div class="col-xs-1 text-center">
+                    <p ng-class="{'hover':hover}" style="cursor: default">
+                    {{item.lockId}}
+                    </p>
+                </div>
+                <div class="col-xs-1 text-center">
+                    <p ng-class="{'hover':hover}" style="cursor: default">
+                    {{item.position}}
+                    </p>
+                </div>
+                <div class="col-xs-1 text-center">
+                    <p ng-class="{'hover':hover}" style="cursor: default">
+                    {{item.location}}
+                    </p>
+                </div>
+                <div class="col-xs-1 text-center">
+                    <p ng-class="{'hover':hover}" style="cursor: default">
+                    {{item.longitude}}
+                    </p>
+                </div>
+                <div class="col-xs-1 text-center">
+                    <p ng-class="{'hover':hover}" style="cursor: default">
+                    {{item.latitude}}
+                    </p>
+                </div>
+                <div class="col-xs-1 text-center">
+                    <p class="bt-span" ng-class="{'hover':hover}" style="cursor: default">
+                        <span title="编辑" ui-sref="editPE({id:item.placenum})" class="glyphicon glyphicon-edit"></span>
+                        <span title="删除" ng-click="delete(item)" class="glyphicon glyphicon-trash"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

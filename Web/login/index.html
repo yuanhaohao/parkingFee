@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="login_bg">
+    <div class="login_box">
+        <img class="logo" src="images/iiotlogo.png"/>
+        <img class="iot" src="images/iot.png"/>
+        <hr>
+        <form>
+            <label>用户名<span class="wrong_msg"></span></label>
+            <input type="text" placeholder>
+            <label>密码<span class="wrong_msg"></span></label>
+            <input type="password" placeholder>
+            <label>验证码<span class="wrong_msg"></span></label>
+            <div class="verification-code">
+                <input type="text" placeholder id="vCode" oninput="OnInput(event)" onpropertychange="OnPropChanged(event)">
+                <div>
+                    <img src="images/yzm.jpg" alt id="randCodeImg" title="点击刷新" onclick="refreshRandCode()">
+                </div>
+                <span class="code_img" onclick="refreshRandCode()"></span>
+            </div>
+            <button id="login" type="button" onclick="toLogin()"><a>登录</a><i id="dot">...</i></button>
+        </form>
+    </div>
+    <p class="tip_bottom">
+        <i></i>
+        <span>Copyright &copy; <a href="https://cn.istuary.com" target="_blank">溢思得瑞科技创新集团</a></span>
+        <i></i>
+    </p>
+</div>
+
+<script>
+    var inputs=document.getElementsByTagName('input');
+
+    var codeImg=0;
+    var currCode="1234";
+
+    //刷新验证码
+    function refreshRandCode() {
+        //动画
+        if(codeImg==0){
+            var code_img=document.getElementsByClassName('code_img')[0];
+            code_img.setAttribute('class','code_img code_transition code_transform');
+            setTimeout(function () {
+                code_img.setAttribute('class','code_img');
+            },810);
+        }
+
+        //更新验证码
+        var xhr=null;
+        if(window.XMLHttpRequest){
+            xhr=new XMLHttpRequest();
+        }else{
+            xhr=new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        xhr.onreadystatechange=function(){//只要xhr.readyState值改变就会触发
+            if(xhr.readyState===4){
+                if(xhr.status===200){
+                    //响应成功，处理响应主体数据…xhr.responseText
+                    //currCode=xhr.responseText
+                }else{
+                    //响应结束，失败
+                }
+            }
+        };
+        //    xhr.open('get','验证码链接',true);
+        //    xhr.send(null);
+    }
+
+    // 监听验证码输入框的实时变化Firefox, Google Chrome, Opera, Safari, IE from version 9
+    function OnInput (event) {
+        console.log ("当前输入码为: " + event.target.value);
+        if(event.target.value==currCode){
+            document.getElementsByClassName("code_img")[0].style.backgroundImage="url('images/correct.png')";
+            codeImg=1;
+            inputs[2].style.background="#F8FAFC";
+            inputs[2].style.border="1px solid #4BA3FF"
+        }else{
+            if(event.target.value.length>currCode.length){
+                document.getElementsByClassName("code_img")[0].style.backgroundImage="url('images/wrong.png')";
+                codeImg=2;
+                inputs[2].style.background="#fdeace";
+                inputs[2].style.border="1px solid #ff0000"
+            }else{
+                if(codeImg!=0){
+                    document.getElementsByClassName("code_img")[0].style.backgroundImage="url('images/refresh.png')";
+                    codeImg=0;
+                }
+                inputs[2].style.background="#F8FAFC";
+                inputs[2].style.border="1px solid #4BA3FF"
+            }
+        }
+    }
+    function OnPropChanged (event) {// IE
+        if (event.propertyName.toLowerCase () == "value") {
+            console.log ("The new content: " + event.srcElement.value);
+        }
+    }
+    inputs[2].onblur=function () {
+        inputs[2].style.background="#F8FAFC";
+        inputs[2].style.border="1px solid #DFE3E9"
+    };
+    inputs[2].onfocus=function () {
+        inputs[2].style.border="1px solid #4BA3FF"
+    };
+
+
+    //登录
+    var LocationURL="http://10.0.10.222:8090/";
+    var ApiURL="";
+
+    function toLogin() {
+        //错误提示
+        var wrong_msgs=document.getElementsByClassName("wrong_msg");
+        function wrongTips(a) {
+            wrong_msgs[a].style.display="block";
+            switch (a){
+                case 0:
+                    wrong_msgs[a].innerText="请输入用户名";
+                    break;
+                case 1:
+                    wrong_msgs[a].innerText="请输入密码";
+                    break;
+                case 2:
+                    wrong_msgs[a].innerText="请输入验证码";
+                    break;
+            }
+        }
+        for(var i=0;i<inputs.length;i++){
+            inputs[i].onfocus=(function (i) {
+                return function () {
+                    wrong_msgs[i].style.display="none";
+                }
+            })(i);
+        }
+
+        if(!inputs[0].value){
+            wrongTips(0);
+            return
+        }else if(!inputs[1].value){
+            wrongTips(1);
+            return
+        }else if(!inputs[2].value){
+            wrongTips(2);
+            return
+        }else if(inputs[2].value!=currCode){
+            wrongTips(2);
+            wrong_msgs[2].innerText="请输入正确的验证码";
+            return
+        }else {
+            //验证用户名密码
+//            验证不通过--执行下面代码
+//            wrongTips(1);
+//            wrong_msgs[1].innerText="用户名密码不匹配";
+//            return
+            //验证通过--执行下面代码
+            var btn=document.getElementById('login');
+            btn.setAttribute('disabled','disabled');
+            btn.style.background="rgba(153,153,153,.8)";
+            btn.style.cursor="not-allowed";
+            var dot=document.getElementById('dot');
+            dot.setAttribute('class','dot');
+
+            //    window.location.href=LocationURL+"IR";
+        }
+    }
+</script>
+</body>
+</html>

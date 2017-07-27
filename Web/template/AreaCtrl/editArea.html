@@ -1,0 +1,50 @@
+<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>设置 / 片区设置 / 编辑片区</span></p>
+
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="orgDetail">
+                <div class="row">
+                    <div class="col-xs-6">编辑片区</div>
+                    <div class="col-xs-6 text-right bt-span">
+                        <span ui-sref="areaCtrl" class="remove">&times;</span>
+                    </div>
+                </div>
+
+                <form class="orgAdd-body addUser" id="myForm" ng-submit="save()">
+                    <input type="hidden" name="parkLotId" value="{{parkLotId}}" />
+                    <div class="row">
+                        <div class="col-xs-1 col-xs-offset-1 text-right t"><b>*</b>片区命名</div>
+                        <div class="col-xs-2">
+                            <input type="text" name="parkLotName" ng-model="parkLotName" placeholder="30个字符以内">
+                        </div>
+                        <div class="col-xs-1 text-right t">道路位置</div>
+                        <div class="col-xs-2">
+                            <input type="text" name="location" ng-model="location" placeholder="">
+                        </div>
+                        <div class="col-xs-1 text-right t">方位</div>
+                        <div class="col-xs-2">
+                            <input type="text" name="position" ng-model="position" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-1 col-xs-offset-1 text-right t"><b>*</b>经度</div>
+                        <div class="col-xs-2">
+                            <input type="text" name="longtitude" ng-model="longtitude" placeholder="">
+                        </div>
+                        <div class="col-xs-1 text-right t"><b>*</b>纬度</div>
+                        <div class="col-xs-2">
+                            <input type="text" name="latitude" ng-model="latitude" placeholder="">
+                        </div>
+                    </div>
+                    <div class="orgAdd-foot">
+                        <button ui-sref="areaCtrl" class="btn btn-sm btn-default" type="button">取消</button>
+                        <button id="storeWeek"
+                                class="btn btn-sm btn-primary" type="submit">保存
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

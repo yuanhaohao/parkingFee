@@ -1,0 +1,35 @@
+<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>车主管理 / 账号信息 / 详情</span></p>
+
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="orgDetail">
+                <div class="row">
+                    <div class="col-xs-6">账号信息详情</div>
+                    <div class="col-xs-6 text-right bt-span">
+                        <span ui-sref="accountInformation" class="remove">&times;</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 fee-box">
+                        <div class="row auto-line">
+                            <div class="col-xs-2"><p>序号</p></div>
+                            <div class="col-xs-3"><p>账号</p></div>
+                            <div class="col-xs-3"><p>充值时间</p></div>
+                            <div class="col-xs-2"><p>充值金额</p></div>
+                            <div class="col-xs-2"><p>充值方式</p></div>
+                        </div>
+                                <div ng-mousemove="hover=true" ng-mouseleave="hover=false" class="row auto-line" ng-repeat="list in lists">
+                                    <div class="col-xs-2"><p ng-class="{'hover':hover}" style="cursor: default">{{$index+1}}</p></div>
+                                    <div class="col-xs-3"><p ng-class="{'hover':hover}" style="cursor: default">{{phone}}</p></div>
+
+                                    <div class="col-xs-3"><p ng-class="{'hover':hover}" style="cursor: default" ng-bind="date(list.rechargeTime)"></p></div>
+                                    <div class="col-xs-2"><p ng-class="{'hover':hover}" style="cursor: default">{{list.account}}</p></div>
+                                    <div class="col-xs-2"><p ng-class="{'hover':hover}" style="cursor: default" ng-bind="pay(list.rechargeWay)"></p></div>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>设置 / 片区设置 / 片区收费规则详情</span></p>
+<section class="gatewaySetting">
+    <!--计费详情-->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="orgDetail">
+                <div class="row">
+                    <div class="col-xs-6">{{thisRule.name}}</div>
+                    <div class="col-xs-6 text-right bt-span">
+                        <span ui-sref="linkFee({id:id,ruleId:linkId})" class="glyphicon glyphicon-arrow-left"></span>
+                    </div>
+                </div>
+                <div class="row this-fee">
+                    <div class="col-xs-12" ng-repeat="type in thisRule.types">
+                        <p class="title">
+                            <span>[{{type.typeName=="FREQUENCY"?"按次收费":type.typeName=="INTERVAL"?"计时收费":"阶梯计时收费"}}]</span>
+                            <b ng-repeat="week in type.weeks">
+                                星期{{week==1?"一":week==2?"二":week==3?"三":week==4?"四":week==5?"五":week==6?"六":"日"}}
+                            </b>
+                        </p>
+                        <p ng-if="type.intervalFreeMinutes||type.intervalFreeMinutes==0">
+                            <a class="yellow"></a>免费时长：{{type.intervalFreeMinutes}}分钟
+                        </p>
+                        <p ng-if="type.ladderFreeMinutes||type.ladderFreeMinutes==0">
+                            <a class="yellow"></a>免费时长：{{type.ladderFreeMinutes}}分钟
+                        </p>
+                        <p ng-if="type.maxAmount||type.maxAmount==0">
+                            <a></a>每次收取金额：{{type.maxAmount}}元
+                        </p>
+                        <p ng-if="type.intervalMaxAmount||type.intervalMaxAmount==0">
+                            <a></a>封顶金额：{{type.intervalMaxAmount}}元
+                        </p>
+                        <p ng-if="type.ladderMaxAmount||type.ladderMaxAmount==0">
+                            <a></a>封顶金额：{{type.ladderMaxAmount}}元
+                        </p>
+                        <div ng-if="type.intervals">
+                            <div ng-repeat="interval in type.intervals">
+                                <p><a></a>{{interval.startTime}}至{{interval.endTime=='23:59'?'24:00':interval.endTime}} 每{{interval.unit}}小时 {{interval.price}}元</p>
+                            </div>
+                        </div>
+                        <div ng-if="type.ladders">
+                            <p><a></a>首停时长：{{type.ladders[0].span}}小时 每{{type.ladders[0].unit}}小时 {{type.ladders[0].price}}元</p>
+                            <p><a></a>首停时长之后：每{{type.ladders[1].unit}}小时 {{type.ladders[1].price}}元</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row 计费详情-->
+</section>

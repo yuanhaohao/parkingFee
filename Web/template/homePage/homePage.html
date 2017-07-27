@@ -1,0 +1,41 @@
+<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>首页</span></p>
+<section class="home">
+    <ul class="list-unstyled home-item-total">
+        <li class="home-item" ng-class="{'home-item-t':reverse}">
+            <div id="indicatorContainerWrap">
+                <p id="indicatorContainer"></p>
+                <p ng-if="homeData.utilizationRate" class="rad-cntnt">今日车位使用率</p>
+            </div>
+        </li>
+        <li class="home-item" ng-class="{'home-item-t':reverse}">
+            <div>
+                <p class="text-center home-item-num">{{homeData.parkRecordCount}}次</p>
+                <p class="text-center home-item-font">今日停车次数</p>
+            </div>
+        </li>
+        <li class="home-item" ng-class="{'home-item-t':reverse}">
+            <div>
+                <p class="text-center home-item-num">{{homeData.payAmount}}元</p>
+                <p class="text-center home-item-font">今日缴费总额</p>
+            </div>
+        </li>
+        <li class="home-item" ng-class="{'home-item-t':reverse}">
+            <div>
+                <p class="text-center home-item-num">{{homeData.arrearsAmount}}元</p>
+                <p class="text-center home-item-font">今日欠费总额</p>
+            </div>
+        </li>
+        <li class="home-item" ng-class="{'home-item-t':reverse}">
+            <div>
+                <p class="text-center home-item-num">{{homeData.addUserCount}}人</p>
+                <p class="text-center home-item-font">今日新增用户数</p>
+            </div>
+        </li>
+        <li class="home-item" ng-class="{'home-item-t':reverse}">
+            <div>
+                <p class="text-center home-item-num">{{homeData.deviceCount}}起</p>
+                <p class="text-center home-item-font">今日巡检故障数</p>
+            </div>
+        </li>
+    </ul>
+</section>

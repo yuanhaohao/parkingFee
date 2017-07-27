@@ -1,0 +1,69 @@
+<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>设置 / 巡检员设置 / 添加巡检员</span></p>
+
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="orgDetail">
+                <div class="row">
+                    <div class="col-xs-6">添加巡检员</div>
+                    <div class="col-xs-6 text-right bt-span">
+                        <span ui-sref="inspectorCtrl" class="remove">&times;</span>
+                    </div>
+                </div>
+                <form class="orgAdd-body addUser" id="myForm" ng-submit="save()">
+                    <div class="row">
+                        <div class="col-xs-1 col-xs-offset-1 text-right t">账号</div>
+                        <div class="col-xs-2">
+                            <input type="text" required name="accountName" ng-model="accountName" placeholder="">
+                        </div>
+                        <div class="col-xs-1 text-right t">姓名</div>
+                        <div class="col-xs-2">
+                            <input type="text" required name="name" ng-model="name" placeholder="">
+                        </div>
+                        <div class="col-xs-1 text-right t">密码</div>
+                        <div class="col-xs-2">
+                            <input type="text" required name="passWd" ng-model="passWd" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-1 col-xs-offset-1 text-right t">性别</div>
+                        <div class="col-xs-2">
+                            <select ng-model="sex" ng-options="s.id as s.name for s in sexArr">
+                            </select>
+                        </div>
+                        <div class="col-xs-1 text-right t">手机号码</div>
+                        <div class="col-xs-2">
+                            <input type="text" required name="phoneNum" ng-model="phoneNum" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-1 col-xs-offset-1 text-right t">片区</div>
+                        <div class="col-xs-5">
+                            <select name="parkLotId" required id="areaIn" class="js-example-basic-multiple" multiple="multiple">
+                                <option ng-value="area.name" ng-repeat="area in areas">{{area.value}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-1 col-xs-offset-1 text-right t">身份证号码</div>
+                        <div class="col-xs-5">
+                            <input type="text" required name="idNumber" ng-model="idNumber" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-1 col-xs-offset-1 text-right t">家庭地址</div>
+                        <div class="col-xs-5">
+                            <input type="text" required name="address" ng-model="address" placeholder="">
+                        </div>
+                    </div>
+                    <div class="orgAdd-foot">
+                        <button ui-sref="inspectorCtrl" class="btn btn-sm btn-default" type="button">取消</button>
+                        <button id="storeWeek"
+                                class="btn btn-sm btn-primary" type="submit">保存
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

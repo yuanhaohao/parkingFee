@@ -1,0 +1,56 @@
+
+<p class="OwnerManage"><img src="image/mplatform_icon_currrent.png" class="homeImg"><span>车主管理 / 注册信息 </span></p>
+<section class="gatewaySetting">
+    <div class="row add-search">
+        <form class="col-xs-12">
+            <ul class="list-inline">
+                <li>
+                    <span>账号</span>
+                    <input type="text" ng-keyup="forsearch.searchPhone()" id="loginMass" autocomplete="off">
+                    <div class="searchphone" ng-show="shown">
+                        <div ng-repeat="list in searchList">
+                            <p ng-class="{'hover':hover}" style="cursor: default" ng-click="forsearch.phone(list.phonenum)">{{list.phonenum}}</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span>开始时间</span>
+                    <input type="text" id="startTime" autocomplete="off">
+                </li>
+                <li>
+                    <span>结束时间</span>
+                    <input type="text" id="endTime" autocomplete="off">
+                </li>
+                <li>
+                    <button class="btn btn-success" ng-click="search()"><span class="glyphicon glyphicon-search"></span> 查询</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 fee-box">
+            <div class="row auto-line">
+                <div class="col-xs-2"><p>序号</p></div>
+                <div class="col-xs-3"><p>账号</p></div>
+                <div class="col-xs-3"><p>注册时间</p></div>
+                <!--<div class="col-xs-2"><p>密码</p></div>-->
+                <div class="col-xs-2"><p>是否有效</p></div>
+                <div class="col-xs-2"><p>操作</p></div>
+            </div>
+            <div ng-mousemove="hover=true" ng-mouseleave="hover=false" class="row auto-line" ng-repeat="list in lists">
+                <div class="col-xs-2"><p ng-class="{'hover':hover}" style="cursor: default">{{$index+1}}</p></div>
+                <div class="col-xs-3"><p ng-class="{'hover':hover}" style="cursor: default">{{list.phonenum}}</p></div>
+
+                <div class="col-xs-3"><p ng-class="{'hover':hover}" style="cursor: default">{{list.registertime}}</p></div>
+                <!--<div class="col-xs-2"><p ng-class="{'hover':hover}" style="cursor: default">{{list.passwd}}</p></div>-->
+                <div class="col-xs-2"><p ng-class="{'hover':hover,'passwordFalse':(!list.effective)}" style="cursor: default" ng-bind="use(list.effective)"></p></div>
+                <div class="col-xs-2">
+                    <p class="bt-span" ng-class="{'hover':hover}" style="cursor: default">
+                        <span title="重置密码" ng-click="" class="glyphicon glyphicon-repeat"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
